@@ -6,44 +6,39 @@
 }
 
 body{
-  width: 100%; /*width permet de définir la largeur de la boîte du contenu d'un élément*/
-  height: 100vh; /*height définit la hauteur de la boîte de contenu d'un élément*/
-  display: flex; /*display définit le type d'affichage utilisée pour le rendu d'un élément*/ /*flex: flexible a modifier*/
-  justify-content: center; /*justify-content indique la façon dont l'espace doit être réparti entre 
-  et autour des éléments selon l'axe principal d'un conteneur flexible*/
-  align-items: center; /*align-items définit la valeur de align-self sur l'ensemble des éléments-fils directs*/
-  background: -webkit-linear-gradient(left, #7579ff, #b224ef); /* background lekbira / -webkit... permet de specifier le degradé de couleur linéaire*/
-  font-family: 'Nunito', sans-serif; /*font-family permet de lister différentes familles de police, séparées par des virgules */
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: -webkit-linear-gradient(left, #7579ff, #b224ef);
+  font-family: 'Nunito', sans-serif;
 }
 
 input, button{
   border:none;
   outline: none;
   background: none;
-  /*
-  border : définir les propriétés liées à la bordure .
-  outline : An outline is a line that is drawn around elements, OUTSIDE the borders, to make the element "stand out" .
-*/
 }
 
 .cont{
-  overflow: hidden; /*comment gérer le dépassement du contenu d'un élément dans son bloc*/
-  position: relative; /* comment l'element est positionné*/
+  overflow: hidden;
+  position: relative;
   width: 900px;
-  height: 550px; 
+  height: 550px;
   background: #fff;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22); /* ajouter un shadow fl countour */
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
 .form{
   position: relative;
   width: 640px;
   height: 100%;
-  padding: 50px 30px; /*définir les différents écarts de remplissage sur les quatre côtés d'un élément*/
-  /*-webkit-transition:-webkit-transform 1.2s ease-in-out;
+  padding: 50px 30px;
+  -webkit-transition:-webkit-transform 1.2s ease-in-out;
   transition: -webkit-transform 1.2s ease-in-out;
   transition: transform 1.2s ease-in-out;
-  transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;*/
+  transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
 }
 
 h2{
@@ -55,7 +50,7 @@ h2{
 label{
   display: block;
   width: 260px;
-  margin: 25px auto 0; /* margin définit la taille des marges sur les quatre côtés de l'élément.*/
+  margin: 25px auto 0;
   text-align: center;
 }
 
@@ -63,7 +58,7 @@ label span{
   font-size: 14px;
   font-weight: 600;
   color: #505f75;
-  text-transform: uppercase; /*troudou majuscule*/
+  text-transform: uppercase;
 }
 
 input{
@@ -109,12 +104,12 @@ button{
   color: #0c0101;
   cursor: pointer;
 }
-/*hover permet de spécifier l'apparence d'un élément au moment où l'utilisateur le survole avec le pointeur*/
+
 .forgot-pass:hover{
   color: red;
 }
 
-.social-media{
+/*.social-media{
   width: 100%;
   text-align: center;
   margin-top: 20px;
@@ -133,9 +128,9 @@ button{
 .social-media img{
   width: 40px;
   height: 40px;
-}
+}*/
 
-.sub-cont{ /* swipe eli ala jnab*/
+.sub-cont{
   overflow: hidden;
   position: absolute;
   left: 640px;
@@ -152,7 +147,6 @@ button{
 .cont.s-signup .sub-cont{
   -webkit-transform:translate3d(-640px, 0, 0);
           transform:translate3d(-640px, 0, 0);
-          /*ki tenzel s'inscrire walla s'identifier tarjaa lel lekher el swipe */
 }
 
 .img{
@@ -173,13 +167,13 @@ button{
   top: 0;
   width: 900px;
   height: 100%;
-  background-image: url(images/unnamed.jpg);
+  background-image: url(images/bg1.png);
   background-size: cover;
   transition: -webkit-transform 1.2s ease-in-out;
   transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
 }
 
-.img:after{ /*tghama9 fel image men teli*/
+.img:after{
   content: '';
   position: absolute;
   left: 0;
@@ -249,7 +243,7 @@ button{
           transform:translate3d(640px, 0, 0);
 }
 
-.img-btn{ /* l button li ala jnab*/
+.img-btn{
   overflow: hidden;
   z-index: 2;
   position: relative;
@@ -263,7 +257,7 @@ button{
   cursor: pointer;
 }
 
-.img-btn:after{ /* l button li ala jnab*/
+.img-btn:after{
   content: '';
   z-index: 2;
   position: absolute;
