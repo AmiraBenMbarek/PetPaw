@@ -1,9 +1,13 @@
 function saisirNom() {
-    var name = document.getElementById('name').value;
+    var name = document.getElementById('Name_Pr').value;
     var regex = /^[A-Za-z]+$/;
 
 
-    if (!(regex.test(name))) {
+    if (name == "") {
+        document.getElementById("errorName").textContent = "Name has to be filled!";
+        document.getElementById("errorName").style.color = "red";
+        return 0;
+    } else if (!(regex.test(name))) {
         document.getElementById("errorName").textContent = "Name has to be composed of letters only!";
         document.getElementById("errorName").style.color = "red";
         return 0;
@@ -19,10 +23,14 @@ function saisirNom() {
 }
 
 function saisirPrice() {
-    var price = document.getElementById('price').value;
+    var price = document.getElementById('Price_Pr').value;
 
-    if (price <= 0) {
-        document.getElementById("errorPrice").textContent = "Price has to be positive!";
+    if (price == "") {
+        document.getElementById("errorPrice").textContent = "Price has to be filled!";
+        document.getElementById("errorPrice").style.color = "red";
+        return 0;
+    } else if (price <= 0) {
+        document.getElementById("errorPrice").textContent = "Price can't be negative or null!";
         document.getElementById("errorPrice").style.color = "red";
         return 0;
     } else {
@@ -33,10 +41,14 @@ function saisirPrice() {
 }
 
 function saisirQuantity() {
-    var quantity = document.getElementById('quantity').value;
+    var quantity = document.getElementById('Quantity_Pr').value;
 
-    if (quantity <= 0) {
-        document.getElementById("errorQuantity").textContent = "Quantity has to be positive!";
+    if (quantity == "") {
+        document.getElementById("errorQuantity").textContent = "Quantity has to be filled!";
+        document.getElementById("errorQuantity").style.color = "red";
+        return 0;
+    } else if (quantity <= 0) {
+        document.getElementById("errorQuantity").textContent = "Quantity can't be negative or null!";
         document.getElementById("errorQuantity").style.color = "red";
         return 0;
     } else {
@@ -46,25 +58,63 @@ function saisirQuantity() {
     }
 }
 
-function saisirWeight() {
-    var weight = document.getElementById('weight').value;
+function saisirType() {
+    var name = document.getElementById('Type_Pr').value;
+    var regex = /^[A-Za-z]+$/;
 
-    if (weight <= 0) {
-        document.getElementById("errorWeight").textContent = "Weight has to be positive!";
-        document.getElementById("errorWeight").style.color = "red";
+
+    if (name == "") {
+        document.getElementById("errorType").textContent = "Type has to be filled!";
+        document.getElementById("errorType").style.color = "red";
+        return 0;
+    } else if (!(regex.test(name))) {
+        document.getElementById("errorType").textContent = "Type has to be composed of letters only!";
+        document.getElementById("errorType").style.color = "red";
+        return 0;
+    } else if (name[0] == name[0].toLowerCase()) {
+        document.getElementById("errorType").textContent = "Type has to start by a capital letter!";
+        document.getElementById("errorType").style.color = "red";
         return 0;
     } else {
-        document.getElementById("errorWeight").textContent = "Weight Verified";
-        document.getElementById("errorWeight").style.color = "green";
+        document.getElementById("errorType").textContent = "Type Verified";
+        document.getElementById("errorType").style.color = "green";
+        return 1;
+    }
+}
+
+function saisirCategory() {
+    var name = document.getElementById('Category_Pr').value;
+    var regex = /^[A-Za-z]+$/;
+
+
+    if (name == "") {
+        document.getElementById("errorCategory").textContent = "Category has to be filled!";
+        document.getElementById("errorCategory").style.color = "red";
+        return 0;
+    } else if (!(regex.test(name))) {
+        document.getElementById("errorCategory").textContent = "Category has to be composed of letters only!";
+        document.getElementById("errorCategory").style.color = "red";
+        return 0;
+    } else if (name[0] == name[0].toLowerCase()) {
+        document.getElementById("errorCategory").textContent = "Category has to start by a capital letter!";
+        document.getElementById("errorCategory").style.color = "red";
+        return 0;
+    } else {
+        document.getElementById("errorCategory").textContent = "Category Verified";
+        document.getElementById("errorCategory").style.color = "green";
         return 1;
     }
 }
 
 function saisirDescription() {
-    var desc = document.getElementById('desc').value;
-    var regex = /^[A-Za-z0-9]+$/;
+    var desc = document.getElementById('Description_Pr').value;
+    var regex = /^[A-Za-z0-9 ]+$/;
 
-    if (!(regex.test(desc))) {
+    if (desc == "") {
+        document.getElementById("errorDescription").textContent = "Description has to be filled!";
+        document.getElementById("errorDescription").style.color = "red";
+        return 0;
+    } else if (!(regex.test(desc))) {
         document.getElementById("errorDescription").textContent = "Description has to be composed of letters/numbers only!";
         document.getElementById("errorDescription").style.color = "red";
         return 0;
@@ -80,7 +130,7 @@ function saisirDescription() {
 }
 
 function ajoutproduit(event) {
-    if (saisirDescription() == 0 || saisirWeight() == 0 || saisirQuantity() == 0 ||
-        saisirPrice() == 0 || saisirNom() == 0)
+    if (saisirDescription() == 0 || saisirQuantity() == 0 || saisirPrice() == 0 || saisirNom() == 0 ||
+        saisirType() == 0 || saisirCategory() == 0)
         event.preventDefault();
 }

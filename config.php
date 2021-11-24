@@ -3,25 +3,24 @@
 class config
 {
     private static $pdo=NULL;
-    public static function getConn()
+    public static function getConnexion()
     {
         if (!isset(self::$pdo))
         {
             try
             {
-                self::$pdo=new pdo('mysql:host=localhost;dbname=PetPaw','root','',
+                self::$pdo=new pdo('mysql:host=localhost;dbname=petpaw','root','',
                 [
-                    pdo:: ATTR_ERRMODE => pdo::ERRMODE_EXCEPTION,
-                    pdo:: ATTR_DEFAULT_FETCH_MODE => pdo::FETCH_ASSOC
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
                 ]);
-                echo "successful connection<br>";
             }
-            catch(PDOException $e)
+            catch(Exception $e)
             {
                 die ('connection failed: '.$e->getMessage());
             }
         }
         return self::$pdo;
     }
-}
+}    
 ?>

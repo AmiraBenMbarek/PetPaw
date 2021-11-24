@@ -2,13 +2,9 @@
     include_once '../model/productM.php';
     include_once '../controller/productC.php';
 
-    $error = "";
-
     $productM = null;
 
     $productC = new productC();
-    //$productU = new productC();
-    //$productD = new productC();
     if (
         //isset($_POST["ID_Pr"]) &&
 		isset($_POST["Name_Pr"]) &&
@@ -16,12 +12,11 @@
         isset($_POST["Quantity_Pr"]) && 
         isset($_POST["Image_Pr"]) && 
         isset($_POST["Type_Pr"]) && 
-        isset($_POST["Category_Pr"]) &&
+        isset($_POST["Category_Pr"]) && 
         isset($_POST["Description_Pr"])
     ) {
         
             $productM = new productM(
-                //$_POST['ID_Pr'],
 				$_POST['Name_Pr'],
                 $_POST['Price_Pr'],
                 $_POST['Quantity_Pr'],
@@ -30,13 +25,11 @@
                 $_POST['Category_Pr'],
                 $_POST['Description_Pr']
             );
-            $productC->ajouterProduit($productM);  
-            //$productU->modifierProduit($productM, $_POST["ID"]);
+            $productC->modifierProduit($productM, $_POST["ID_Pr"]);
+            
             header('Location:products.php');
-            //$productD->supprimerProduit($_POST["ID_Pr"]);
-      
     }
-    $listeproduits=$productC->afficherproduits(); 
+
 ?>
 
     <!DOCTYPE html>
@@ -337,14 +330,14 @@
                                                 </a>
                                                 <ul class="pcoded-submenu">
                                                     <li class="active">
-                                                        <a href="#" class=" waves-effect waves-dark">
+                                                        <a href="products.html" class=" waves-effect waves-dark">
                                                             <span class="pcoded-micon "><i class="ti-angle-right"></i></span>
                                                             <span class="pcoded-mtext " data-i18n="nav.basic-components.alert ">Products</span>
                                                             <span class="pcoded-mcaret "></span>
                                                         </a>
                                                     </li>
-                                                    <li class="">
-                                                        <a href="orders.php" class="waves-effect waves-dark ">
+                                                    <li class=" ">
+                                                        <a href=" " class="waves-effect waves-dark ">
                                                             <span class="pcoded-micon "><i class="ti-angle-right "></i></span>
                                                             <span class="pcoded-mtext " data-i18n="nav.basic-components.alert ">Orders</span>
                                                             <span class="pcoded-mcaret "></span>
@@ -597,64 +590,6 @@
                                         <!-- Page body start -->
                                         <div class="page-body">
                                             <div class="row">
-                                                <div class="input-group">
-                                                    <input type="text" class="col-sm form-control" placeholder='Search By Name'>
-                                                    <div class="search_widget">
-                                                        <button class="search_widget" type="button">
-                                                            <i class="ti-search"></i>
-                                                        </button>
-                                                    </div><!--
-                                                    <div class="col-sm custom-select">
-                                                        <select class="" >
-                                                            <option>Filter By</option>
-                                                            <option>Price Ascending</option>
-                                                            <option>Price Descending</option>
-                                                            <option>Name Ascending</option>
-                                                            <option>Name Descending</option>
-                                                        </select>
-                                                        <div class="select-selected">Filter By</div>
-                                                            <div class="select-items select-hide">
-                                                                <div>Price Ascending</div>
-                                                                <div>Price Descending</div>
-                                                                <div>Name Ascending</div>
-                                                                <div>Name Descending</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>-->
-                                                    <div class="col-sm">
-                                                        <button class="add_btn open_btn" onclick="addproduct()" data-toggle="form_popup" data-target="#myform" id="add_product">+ Add Product</button>
-                                                        </div>
-                                                </div>
-                                            
-                                                <div class="form_popup" id="myform">
-                                                    <form action="" class="form_container" method="POST">
-                                                        <h1>Add Product</h1>
-                                                        <input type="hidden"placeholder="Enter Name" id="ID_Pr" name="ID_Pr">
-
-                                                        <input class="champs" onblur="saisirNom()" type="text" placeholder="Enter Name" id="Name_Pr" name="Name_Pr">
-                                                        <p id="errorName" class="error"></p>
-
-                                                        <input class="champs" onblur="saisirPrice()" type="number" placeholder="Enter Price" id="Price_Pr" name="Price_Pr">
-                                                        <p id="errorPrice" class="error"></p>
-
-                                                        <input class="champs" onblur="saisirQuantity()" type="number" placeholder="Enter Quantity" id="Quantity_Pr" name="Quantity_Pr">
-                                                        <p id="errorQuantity" class="error"></p>
-
-                                                        <input type="file" id="Image_Pr" name="Image_Pr" required>
-
-                                                        <input class="champs" onblur="saisirType()" type="text" placeholder="Enter Product Type" id="Type_Pr" name="Type_Pr">
-                                                        <p id="errorType" class="error"></p>
-
-                                                        <input class="champs" onblur="saisirCategory()" type="text" placeholder="Enter Product Category" id="Category_Pr" name="Category_Pr">
-                                                        <p id="errorCategory" class="error"></p>
-
-                                                        <textarea class="champs" onblur="saisirDescription()" placeholder="Enter Product Description" id="Description_Pr" name="Description_Pr"></textarea>
-                                                        <p id="errorDescription" class="error"></p>
-
-                                                        <button type="submit" class="add_btn" onclick="ajoutproduit(event)">Submit</button>
-                                                        <button type="reset" class="add_btn" onclick="closeform()">Cancel</button>
-                                                    </form>
-                                                </div>
                                             </div>
                                             <div class="col-sm-12">
                                                 <div class="card">
@@ -664,64 +599,39 @@
                                                     <div class="card-block">
                                                         <div class="data-table-main icon-list-demo">
                                                             <div class="row">
-                                                                <table id="product_table" border="1">
-                                                                    <tr>
-                                                                        <td>Product ID</td>
-                                                                        <td>Name</td>
-                                                                        <td>Price</td>
-                                                                        <td>Quantity</td>
-                                                                        <td>Image</td>
-                                                                        <td>Type</td>
-                                                                        <td>Category</td>
-                                                                        <td>Description</td>
-                                                                        <td>Update</td>
-                                                                        <td>Delete</td>
-                                                                    </tr>
-                                                                    <?php
-                                                                        foreach($listeproduits as $produit){
-                                                                    ?>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <?php echo $produit['ID_Pr']; ?>
-                                                                        </td>
-                                                                        <td>
-                                                                            <?php echo $produit['Name_Pr']; ?>
-                                                                        </td>
-                                                                        <td>
-                                                                            <?php echo $produit['Price_Pr']; ?>
-                                                                        </td>
-                                                                        <td>
-                                                                            <?php echo $produit['Quantity_Pr']; ?>
-                                                                        </td>
-                                                                        <td>
-                                                                        <?php echo $produit['Image_Pr']; ?>
-                                                                        </td>
-                                                                        <td>
-                                                                            <?php echo $produit['Type_Pr']; ?>
-                                                                        </td>
-                                                                        <td>
-                                                                            <?php echo $produit['Category_Pr']; ?>
-                                                                        </td>
-                                                                        <td>
-                                                                            <?php echo $produit['Description_Pr']; ?>
-                                                                        </td>
-                                                                        <td>
-                                                                            <form action="update products.php" method="POST">
-                                                                                <input type="submit" class="add_btn" value="Edit">
-                                                                                <input type="hidden" value=<?PHP echo $produit['ID_Pr']; ?> name="ID_Pr">
-                                                                            </form>
-                                                                        </td>
-                                                                        <td>
-                                                                        <form action="delete products.php" method="POST">
-                                                                            <button type="submit" class="add_btn">Delete
-                                                                                <input type="hidden" value=<?PHP echo $produit['ID_Pr']; ?> name="ID_Pr">
-                                                                            </button>
+                                                                <?php
+                                                                    if (isset($_POST['ID_Pr'])){
+                                                                        $productM = $productC->retrieveProduit($_POST["ID_Pr"]);  
+                                                                    }                                                                      
+                                                                ?>
+                                                                
+                                                                        <form action="" method="POST">
+                                                                            <h1>Edit Product</h1>
+                                                                            <input type="hidden"  id="ID_Pr" value="<?php echo $productM['ID_Pr']; ?>" name="ID_Pr"><br>
+
+                                                                            <input class="champs" type="text" value="<?php echo $productM['Name_Pr']; ?>"  id="Name_Pr" name="Name_Pr">
+                                                                            <p id="errorName" class="error"></p>
+
+                                                                            <input class="champs" type="number" value="<?php echo $productM['Price_Pr']; ?>" id="Price_Pr" name="Price_Pr">
+                                                                            <p id="errorPrice" class="error"></p>
+
+                                                                            <input class="champs" type="number" value="<?php echo $productM['Quantity_Pr']; ?>" id="Quantity_Pr" name="Quantity_Pr">
+                                                                            <p id="errorQuantity" class="error"></p>
+
+                                                                            <input type="file" id="Image_Pr" value="<?php echo $productM['Image_Pr']; ?>" name="Image_Pr"><br>
+
+                                                                            <input class="champs" type="text" value="<?php echo $productM['Type_Pr']; ?>" id="Type_Pr" name="Type_Pr">
+                                                                            <p id="errorType" class="error"></p>
+
+                                                                            <input class="champs" type="text" value="<?php echo $productM['Category_Pr']; ?>" id="Category_Pr" name="Category_Pr">
+                                                                            <p id="errorCategory" class="error"></p>
+
+                                                                            <input class="champs" value="<?php echo $productM['Description_Pr']; ?>" id="Description_Pr" name="Description_Pr">
+                                                                            <p id="errorDescription" class="error"></p>
+
+                                                                            <input type="submit" value="Submit" class="add_btn">
+                                                                            <button type="submit" class="add_btn"><a href="products.php" style="color:white">Cancel</a></button>
                                                                         </form>
-                                                                            
-                                                                        </td>
-                                                                </tr>
-                                                                <?php } ?>
-                                                                </table>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -755,31 +665,6 @@
                         <script type="text/javascript" src="assets/js/script.js"></script>
                         <script type="text/javascript" src="assets/js/purchases.js"></script>
 
-
-                        <script>
-                            function addproduct() {
-
-                                document.getElementById("myform").style.display = "block";
-
-                            }
-
-                            function updateProduct() {
-
-                                document.getElementById("myform1").style.display = "block";
-
-                                }
-
-                            function closeform() {
-                                document.getElementById("myform").style.display = "none";
-                            }
-
-                            // Store
-                            var name=document.getElementById("Name_Pr").value;
-                            
-                            //alert(name);
-                            localStorage.setItem("n","name");
-                            
-                        </script>
 
                     </div>
                 </div>

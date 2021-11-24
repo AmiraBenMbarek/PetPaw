@@ -15405,7 +15405,7 @@ span.badge {
     All Icon Common Page css
 ======================== */
 
-.data-table-main.icon-list-demo [class*=col-] {
+.icon-list-demo.icon-list-demo [class*=col-] {
     margin-bottom: 10px;
 }
 
@@ -15447,7 +15447,7 @@ span.badge {
     display: inline-block;
 }
 
-.data-table-main.flags [class*=col-] {
+.icon-list-demo.flags [class*=col-] {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -23744,8 +23744,8 @@ body.dark .page-header:before {
 .form_container {
     max-width: 300px;
     padding: 15px;
-    margin-left: 40%;
-    margin-top: 8%;
+    margin-left: 43%;
+    margin-top: 5%;
     border: none;
     background: #f1f1f1;
 }
@@ -23771,9 +23771,7 @@ body.dark .page-header:before {
 
 .form_container .add_btn {
     height: 50px;
-    font-size: 16px;
-    padding-left: 55px;
-    text-align: center;
+    padding-left: 45px;
     background-size: 200%
 }
 
@@ -23818,4 +23816,115 @@ body.dark .page-header:before {
 .add_btn:focus {
     outline: 0;
     box-shadow: none
+}
+
+.form-control::placeholder {
+    color: #690483
+}
+
+.form-control:focus {
+    border-color: #690483;
+    outline: 0;
+    box-shadow: none
+}
+
+.form-control {
+    height: 50px;
+    border-color: #690483;
+    font-size: 13px;
+    color: #690483;
+    padding-left: 20px;
+    border-radius: 0;
+    border-right: 0
+}
+
+.form-control::placeholder {
+    color: #690483
+}
+
+.form-control:focus {
+    border-color: #690483;
+    outline: 0;
+    box-shadow: none
+}
+
+.search_widget button {
+    background: #67297f;
+    border-left: 0;
+    border: 1px solid #690483;
+    padding: 13.5px 15px;
+    border-left: 0;
+    cursor: pointer
+}
+
+.search_widget button i {
+    color: #fff
+}
+
+.custom-select select {
+    display: none;
+    /*hide original SELECT element:*/
+}
+
+.select-selected {
+    background-color: #3ab5db;
+}
+
+
+/*style the arrow inside the select element:*/
+
+.select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+}
+
+
+/*point the arrow upwards when the select box is open (active):*/
+
+.select-selected.select-arrow-active:after {
+    border-color: transparent transparent #fff transparent;
+    top: 7px;
+}
+
+
+/*style the items (options), including the selected item:*/
+
+.select-items div,
+.select-selected {
+    color: #ffffff;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+    user-select: none;
+}
+
+
+/*style items (options):*/
+
+.select-items {
+    position: absolute;
+    background-color: DodgerBlue;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+
+
+/*hide the items when the select box is closed:*/
+
+.select-hide {
+    display: none;
+}
+
+.select-items div:hover,
+.same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
 }
