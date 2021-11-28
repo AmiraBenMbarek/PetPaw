@@ -72,8 +72,7 @@ class productC
                     Category_Pr = :Category_Pr,
                     Description_Pr = :Description_Pr
                 WHERE ID_Pr = :ID_Pr'
-            );//echo 'fuuuuuuuuuuuuck<br>';
-            //echo $id;
+            );
             $query -> bindValue(':ID_Pr',$id);
            if( $query->execute([
                 'ID_Pr'=> $id,
@@ -86,7 +85,6 @@ class productC
                 'Category_Pr' => $productM->getcategory()
             ])) echo 'sucess';
             else echo 'errrrrrrrrrrrrrror';
-           // echo $query->rowCount() . "update success <br>";
         } catch (Exception $e) {
             $e->getMessage();
         }
