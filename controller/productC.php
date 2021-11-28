@@ -1,7 +1,7 @@
 <?php
 
 include '../config.php';
-// include_once '../model/productM.php';
+include_once '../model/productM.php';
 
 class productC
 {
@@ -27,7 +27,7 @@ class productC
 
             $produit=$query->fetch();
             return $produit;
-        }
+        } 
         catch (Exception $e){
             die('error: '.$e->getMessage());
         }
@@ -134,12 +134,93 @@ class productC
         $sql="SELECT * from product where Name_Pr = '$nom'";
         $db = config::getConnexion();
         try{
-            //$sql->bindValue(':Name_Pr', $nom);
             $liste = $db->query($sql);
             return $liste;
         }
         catch (Exception $e){
             die('error: '.$e->getMessage());
+        }
+    }
+
+    function addComment($productM,$id){
+        $sql="INSERT INTO comments (id_cmt  ,comments, ID_Pr)
+			VALUES (NULL,:comments,$id)";
+			$db = config::getConnexion();
+			try{
+				$query = $db->prepare($sql);
+				$query->execute([
+					//'ID_Pr' => $productM->getid(),
+					'comments' => $productM->getComment()
+				]);			
+			}
+			catch (Exception $e){
+				echo 'Erreur: '.$e->getMessage();
+			}	
+        }
+
+        function afficherComments(){
+            $sql="SELECT * FROM `comments`";
+            $db = config::getConnexion();
+            try{
+                $liste = $db->query($sql);
+                return $liste;
+            }
+            catch(Exception $e){
+                die('erreur: '. $e->getMessage());
+            }
+        }
+
+
+
+    function nameAsc()
+    {
+        $sql="SELECT * FROM `product` ORDER BY `product`.`Name_Pr` ASC";
+        $db = config::getConnexion();
+        try{
+            $liste = $db->query($sql);
+            return $liste;
+        }
+        catch(Exception $e){
+            die('erreur: '. $e->getMessage());
+        }
+    }
+
+    function nameDesc()
+    {
+        $sql="SELECT * FROM `product` ORDER BY `product`.`Name_Pr` DESC";
+        $db = config::getConnexion();
+        try{
+            $liste = $db->query($sql);
+            return $liste;
+        }
+        catch(Exception $e){
+            die('erreur: '. $e->getMessage());
+        }
+    }
+
+    function typeAsc()
+    {
+        $sql="SELECT * FROM `product` ORDER BY `product`.`Type_Pr` ASC";
+        $db = config::getConnexion();
+        try{
+            $liste = $db->query($sql);
+            return $liste;
+        }
+        catch(Exception $e){
+            die('erreur: '. $e->getMessage());
+        }
+    }
+
+    function typeDesc()
+    {
+        $sql="SELECT * FROM `product` ORDER BY `product`.`Type_Pr` DESC";
+        $db = config::getConnexion();
+        try{
+            $liste = $db->query($sql);
+            return $liste;
+        }
+        catch(Exception $e){
+            die('erreur: '. $e->getMessage());
         }
     }
 }

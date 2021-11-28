@@ -12,7 +12,22 @@
     $price=$qte*$product['Price_Pr'];
 
         $productC->addOrder($id,$price,$qte);  
-            //header('Location:orders.php');
+            header('Location:orders.php');
+
+    // if(isset($_POST['submit'])){
+    //     $to = "amira.benmbarek@esprit.tn"; // this is your Email address
+    //     $from = $_POST['email']; 
+    //     $message = $_POST['msg']; 
+    //     echo "Email: ". $_POST["email"];
+
+    // $headers = "From:" . $from;
+    // //$headers2 = "From:" . $to;
+    // mail($to,$subject,$message,$headers);
+    //mail($from,$subject2,$message2,$headers2); 
+    //}
+
+    // $result=mail("amira.benmbarek@esprit.tn","fml","fuck");
+    // var_dump($result);
       
 ?>
 
@@ -133,7 +148,7 @@
     <section class="checkout spad">
         <div class="container">
             <form action="" class="checkout__form" method="post">
-            <!-- <form action="https://formspree.io/f/mjvlbgrl" class="checkout__form" method="post"> -->
+                <!-- <form action="https://formspree.io/f/mjvlbgrl" class="checkout__form" method="post"> -->
                 <div class="row">                        
                         <div class="col-lg-4" style="margin-left:30%">
                             <div class="checkout__order">
@@ -172,10 +187,11 @@
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
-                                <div>
-                                    <!-- <input type="email" name="mail" placeholder="write your email to get a notification"> 
-                                    <input type="hidden" value="order was placed successfully" name="msg"> -->
-                                </div>
+                                <!-- <div>
+                                    <input type='type' placeholder="name" name='buyername'>
+                                    <input type="email" class="checkout__form__input" name="sender" placeholder="write your email to get a receipt"> 
+                                    <input type="hidden" value="order was placed successfully" name="msg">
+                                </div> -->
                                 <?php echo '<a href="'."orders.php?ID_Pr=". $product['ID_Pr'].'">'?><input type="button" class="site-btn btn" value="Place order" ></a>
                             </div>
                         </div>

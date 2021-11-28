@@ -6,6 +6,7 @@
     if (isset($id)){
         $product = $productC->getProduct($id);  
     }
+    $comment = $productC->afficherComments();
 ?>
 
     <!doctype html>
@@ -184,6 +185,42 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="row" style="padding:80px">
+                <div class="d-flex justify-content-center row">
+                    <div class="d-flex flex-column col-md-8">
+                        <div class="d-flex flex-row align-items-center text-left comment-top p-2 bg-white border-bottom px-4">
+                            <div class="profile-image"></div>
+                                <div class="d-flex flex-column-reverse flex-grow-0 align-items-center votings ml-1"></div>
+                                <div class="d-flex flex-column ml-3">
+                                    <div class="d-flex flex-row post-title">
+                                        <h5></h5><span class="ml-2"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment_section p-2 px-4">
+                                <form action="comments.php" method="POST" class="single_sidebar_widget search_widget">
+                                    <div class="form-group">
+                                        <div class="input-group add-comment-section mt-4 mb-4">
+                                            <input type="text" class="form-control" id="comment_pr" name="comment_pr" placeholder="Leave a comment" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Leave a comment'">
+                                            <button class="btn" type="submit">Comment</button>
+                                            <input type="hidden" name="ID_Pr" value="<?php echo $id ?>">
+                                        </div>
+                                    </div>
+                                </form>
+                                <?php foreach($comment as $cmt){ ?>
+                                <div class="commented-section mt-2">
+                                    <div class="d-flex flex-row align-items-center commented-user">
+                                        <h3 class="mr-2">User Name</h3>
+                                    </div>
+                                    <div class="comment-text-sm"><span><?php echo $cmt['comments'] ?></span></div>
+                                    <div class="reply-section">
+                                    </div>
+                                </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>
 
             </div>
 
