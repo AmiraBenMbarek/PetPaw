@@ -4,6 +4,7 @@
     $productC = new productC();
 
     $listeproduits=$productC->afficherproduits();
+
 ?>
 
     <!doctype html>
@@ -108,13 +109,21 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__links" style="float:right;">
+                        <div>
                         <a href="orders.php">Go to orders
                         <i class="fa fa-cart-arrow-down"></i></a>
+                        <div id="google_translate_element"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
 
         <main>
             <section class="blog_area section-padding">
@@ -390,6 +399,8 @@
         <script src="./assets/js/plugins.js"></script>
         <script src="./assets/js/main.js"></script>
         <script src="./assets/js/product.js"></script>
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 
 
     </body>

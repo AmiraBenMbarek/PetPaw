@@ -3,7 +3,6 @@
 
     $productC = new productC();
     $nom=$_POST['nom_pr'];
-    echo $nom;
 
     $listeproduits=$productC->search($nom);
     
@@ -106,19 +105,26 @@
             <!-- Header End -->
         </header>
 
-    <div class="breadcrumb-option">
+        <div class="breadcrumb-option">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__links" style="float:right;">
+                        <div>
                         <a href="orders.php">Go to orders
                         <i class="fa fa-cart-arrow-down"></i></a>
+                        <div id="google_translate_element"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+    <script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
         <main>
             <section class="blog_area section-padding">
                 <div class="container">
@@ -130,7 +136,7 @@
                                     <form action="#">
                                         <div class="form-group">
                                             <div class="input-group mb-3">
-                                                <input type="text" class="form-control" placeholder='Search By Name' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search By Name'">
+                                                <input type="text" class="form-control"  name="nom_pr" placeholder='Search By Name' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search By Name'">
                                                 <div class="input-group-append">
                                                     <button class="btns" type="button">
                                                     <i class="ti-search"></i>
@@ -393,6 +399,7 @@
         <script src="./assets/js/plugins.js"></script>
         <script src="./assets/js/main.js"></script>
         <script src="./assets/js/product.js"></script>
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 
     </body>

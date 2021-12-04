@@ -4,11 +4,23 @@
 
     $orderC = new productC();
 
-    $id=$_GET['ID_Pr'];
+    $id=$_POST['ID_Pr'];
 
     if (isset($id)){
         $order = $orderC->getOrder($id);
     }
+    echo $order['ID_ord'];
+    $qte=$order['Quantity_ord'];
+    $price=$order['Price_ord'];
+    
+    $mail=$_POST['send_mail'];
+
+    mail($mail,'Order Confirmed',"Your order was placed successfully
+
+     Total price: $price
+
+     Quantity ordered: $qte",'From: mirabm48@gmail.com');
+
 
     // $listeproduits=$productC->afficherproduits(); 
 
@@ -86,7 +98,7 @@
                                                             <li><a href="elements.html">More</a></li>
                                                         </ul>
                                                     </li>
-                                                    <li class="active"><a href="#">Pet Supplies</a></li>
+                                                    <li class="active"><a href="pet supplies.php">Pet Supplies</a></li>
 
                                                     <li><a href="projects.html">Events</a></li>
                                                     <li><a href="contact.html">Contact</a></li>
@@ -111,12 +123,12 @@
             <!-- Header End -->
         </header>
         <section class="product-details">
-        <div class="container" style="margin-left:30%">
+        <div class="container" style="margin-left:10%">
             <div class="row">
                 <h2>Order details</h2>
             </div>
             <div class="row">
-                <table id="product_table" border="1">
+                <table id="orders_table" border="1">
                     <tr>
                         <td>Order ID</td>
                         <td>Date</td>
@@ -132,7 +144,7 @@
                 </table>
             </div>
             <div class="row">
-                <form action="edit order.php" method="GET">
+                <form action="edit order.php" method="POST">
                     <button type="submit" class="btn">Edit Order
                     <input type="hidden" value=<?PHP echo $order['ID_ord']; ?> name="ID_ord">
                     </button>

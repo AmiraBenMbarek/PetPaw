@@ -7,28 +7,12 @@
     if (isset($id)){
         $product = $productC->getProduct($id);  
     }
+    
     $qte=$_POST['Quantity_ord'];
-    // $productM = null;
     $price=$qte*$product['Price_Pr'];
 
         $productC->addOrder($id,$price,$qte);  
-            header('Location:orders.php');
-
-    // if(isset($_POST['submit'])){
-    //     $to = "amira.benmbarek@esprit.tn"; // this is your Email address
-    //     $from = $_POST['email']; 
-    //     $message = $_POST['msg']; 
-    //     echo "Email: ". $_POST["email"];
-
-    // $headers = "From:" . $from;
-    // //$headers2 = "From:" . $to;
-    // mail($to,$subject,$message,$headers);
-    //mail($from,$subject2,$message2,$headers2); 
-    //}
-
-    // $result=mail("amira.benmbarek@esprit.tn","fml","fuck");
-    // var_dump($result);
-      
+    
 ?>
 
     <!doctype html>
@@ -85,7 +69,7 @@
                                 <!-- Logo -->
                                 <div class="col-xl-2 col-lg-2">
                                     <div class="logo">
-                                        <a href="index.html"><img src="assets/img/logo/logo2.png" alt=""></a>
+                                        <a href="index.html"><img id="logo" src="assets/img/logo/logo2.png" alt=""></a>
                                     </div>
                                 </div>
                                 <div class="col-xl-10 col-lg-10">
@@ -103,7 +87,7 @@
                                                             <li><a href="elements.html">More</a></li>
                                                         </ul>
                                                     </li>
-                                                    <li class="active"><a href="#">Pet Supplies</a></li>
+                                                    <li class="active"><a href="pet supplies.php">Pet Supplies</a></li>
 
                                                     <li><a href="projects.html">Events</a></li>
                                                     <li><a href="contact.html">Contact</a></li>
@@ -140,6 +124,14 @@
                         <span>Checkout</span>
                     </div>
                 </div>
+                <div class="lg-10">
+                    <div class="pdf_download" style="cursor:pointer">
+                        <div class="printer" >
+                            <i class="fa fa-print"></i>
+                            <span id="download_pdf">Download receipt</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -147,52 +139,60 @@
     <!-- Checkout Section Begin -->
     <section class="checkout spad">
         <div class="container">
-            <form action="" class="checkout__form" method="post">
-                <!-- <form action="https://formspree.io/f/mjvlbgrl" class="checkout__form" method="post"> -->
+            <form action="orders.php" class="single_sidebar_widget search_widget" method="POST">
                 <div class="row">                        
-                        <div class="col-lg-4" style="margin-left:30%">
-                            <div class="checkout__order">
-                                <h5>Your order</h5>
-                                <div class="checkout__order__product">
-                                    <ul>
-                                        <li>
-                                            <span class="top__text">Product</span>
-                                            <span class="top__text__right">Total</span>
-                                        </li>
-                                        <li><?php echo $product['Name_Pr'] ?><span><?php echo $price ?> DT</span></li>
-                                        <li>Quantity<span><?php echo $qte ?></span></li>
-                                    </ul>
+                        <div class="col-lg-4" style="margin-left:30%;">
+                            <div class="checkout__order" style="width:450px;height:600px">
+                                <div id="receipt">
+                                    
+                                    <img src="assets/img/logo/logo2.png" alt="">
+                                    <h2 style="margin-left:50px;margin-top:20px;margin-bottom:20px;">Thank you for your purchase!</h2>
+                                    <h5>Your order</h5>
+                                    <div class="checkout__order__product">
+                                        <ul>
+                                            <li>
+                                                <span class="top__text">Product</span>
+                                                <span style="margin-right:20px" class="top__text__right">Total</span>
+                                            </li>
+                                            <li>
+                                            </li>
+                                            <li><?php echo $product['Name_Pr'] ?><span style="margin-right:20px"><?php echo $price ?> DT</span></li>
+                                            <li>Quantity<span style="margin-right:20px"><?php echo $qte ?></span></li>
+                                        </ul>
+                                    </div>
+                                    <!-- <div class="checkout__order__total">
+                                        <ul>
+                                            <li>Subtotal <span>$ 750.0</span></li>
+                                            <li>Total <span>$ 750.0</span></li>
+                                        </ul>
+                                    </div> -->
+                                    <div class="checkout__order__widget">
+                                        <!-- <label for="o-acc">
+                                            Create an acount?
+                                            <input type="checkbox" id="o-acc">
+                                            <span class="checkmark"></span>
+                                        </label> -->
+                                        <p>Payment method</p>
+                                        <label for="check-payment">
+                                            Cash payment
+                                            <input type="checkbox" id="check-payment">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label for="paypal">
+                                            PayPal
+                                            <input type="checkbox" checked id="paypal">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
                                 </div>
-                                <!-- <div class="checkout__order__total">
-                                    <ul>
-                                        <li>Subtotal <span>$ 750.0</span></li>
-                                        <li>Total <span>$ 750.0</span></li>
-                                    </ul>
-                                </div> -->
-                                <div class="checkout__order__widget">
-                                    <!-- <label for="o-acc">
-                                        Create an acount?
-                                        <input type="checkbox" id="o-acc">
-                                        <span class="checkmark"></span>
-                                    </label> -->
-                                    <p>Payment method</p>
-                                    <label for="check-payment">
-                                        Cash payment
-                                        <input type="checkbox" id="check-payment">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label for="paypal">
-                                        PayPal
-                                        <input type="checkbox" id="paypal">
-                                        <span class="checkmark"></span>
-                                    </label>
+                                <div class="comment_section">
+                                
+                                <div class="form-group search_widget">
+                                        <input type="email" class="form-control" name="send_mail" placeholder="write your email to get a notification" onfocus="this.placeholder = ''" onblur="this.placeholder = 'write your email to get a notification'">
                                 </div>
-                                <!-- <div>
-                                    <input type='type' placeholder="name" name='buyername'>
-                                    <input type="email" class="checkout__form__input" name="sender" placeholder="write your email to get a receipt"> 
-                                    <input type="hidden" value="order was placed successfully" name="msg">
-                                </div> -->
-                                <?php echo '<a href="'."orders.php?ID_Pr=". $product['ID_Pr'].'">'?><input type="button" class="site-btn btn" value="Place order" ></a>
+                                </div>
+                                <input type="hidden" name="ID_Pr" value="<?php echo $product['ID_Pr']?>">
+                                <button type="submit" class="cart_btn btn">Place order</button>
                             </div>
                         </div>
                 </form>
@@ -340,7 +340,7 @@
         <script src="./assets/js/plugins.js"></script>
         <script src="./assets/js/main.js"></script>
         <script src="./assets/js/product.js"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </body>
 
     </html>

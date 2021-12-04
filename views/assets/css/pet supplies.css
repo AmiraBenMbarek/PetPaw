@@ -1323,11 +1323,6 @@ hr {
     display: inline-block;
 }
 
-.product__details__button .cart-btn {
-    float: none;
-    margin-right: 0;
-}
-
 .product__details__button ul {
     float: none;
 }
@@ -1341,19 +1336,6 @@ hr {
     clear: both;
     display: table;
     content: "";
-}
-
-.product__details__button .cart-btn {
-    display: inline-block;
-    font-size: 14px;
-    color: #ffffff;
-    font-weight: 600;
-    text-transform: uppercase;
-    padding: 14px 30px 15px;
-    border-radius: 50px;
-    float: left;
-    margin-right: 10px;
-    margin-bottom: 10px;
 }
 
 .product__details__button ul {
@@ -1722,4 +1704,64 @@ hr {
 
 .comment_section .search_widget .input-group button i {
     color: #fff
+}
+
+#orders_table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#orders_table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#orders_table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#orders_table tr:hover {
+    background-color: #ddd;
+}
+
+.pdf_download .printer {
+    font-size: 15px;
+    font-weight: 500;
+    color: #111111;
+    margin-right: 18px;
+    display: inline-block;
+    position: relative;
+}
+
+.pdf_download .printer:after {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-family: "FontAwesome";
+}
+
+.pdf_download .printer i {
+    margin-right: 5px;
+}
+
+.pdf_download span {
+    font-size: 15px;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.pdf_download .printer:hover {
+    color: #3ab5db;
+    transition: 0.5s;
+}
+
+.pdf_download span:hover {
+    color: #3ab5db;
+    transition: 0.5s;
+}
+
+.cart_btn {
+    margin-top: 20px;
+    margin-left: 115px;
 }

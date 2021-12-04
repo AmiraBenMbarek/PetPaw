@@ -81,7 +81,7 @@
                                                             <li><a href="elements.html">More</a></li>
                                                         </ul>
                                                     </li>
-                                                    <li class="active"><a href="#">Pet Supplies</a></li>
+                                                    <li class="active"><a href="pet supplies.php">Pet Supplies</a></li>
 
                                                     <li><a href="projects.html">Events</a></li>
                                                     <li><a href="contact.html">Contact</a></li>
@@ -116,9 +116,25 @@
                         Back To Products</a>
                     </div>
                 </div>
+                <div class="col-lg-12">
+                    <div class="breadcrumb__links" style="float:right;">
+                        <div>
+                        <a href="orders.php">Go to orders
+                        <i class="fa fa-cart-arrow-down"></i></a>
+                        <div id="google_translate_element"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
+
     <main>
     <!-- Product Details Section Begin -->
     <section class="product-details spad">
@@ -146,23 +162,24 @@
                         <p><?php echo $product['Description_Pr'] ?></p>
                         <div class="product__details__button">
                             <form action="checkout.php" method="POST">
-                            <div class="quantity">
-                                <span>Quantity:</span>
-                                <div class="pro-qty">
-                                    <!-- <span class="dec qtybtn">-</span> -->
-                                    <input type="number" name="Quantity_ord" min="1" value="1">
-                                    <!-- <span class="inc qtybtn">+</span> -->
+                                <div class="quantity">
+                                    <span>Quantity:</span>
+                                    <div class="pro-qty">
+                                        <!-- <span class="dec qtybtn">-</span> -->
+                                        <input type="number" name="Quantity_ord" min="1" value="1">
+                                        <!-- <span class="inc qtybtn">+</span> -->
+                                    </div>
                                 </div>
-                            </div>
-                            <input type="hidden" name="ID_Pr" value="<?php echo $product['ID_Pr']?>" >
-                            <button type="submit" class="cart-btn btn">
-                                <span class="fa fa-shopping-cart"></span> 
-                                    Add to cart
-                            </button>
+                                <input type="hidden" name="ID_Pr" value="<?php echo $product['ID_Pr']?>" >
+                                <button type="submit" class="cart-btn btn">
+                                    <span class="fa fa-shopping-cart"></span> 
+                                        Add to cart
+                                </button>
+                                <ul class="icon_hover">
+                                    <li><a href="#"><span class="fa fa-heart"></span></a></li>
+                                </ul>
                             </form>
-                            <ul class="icon_hover">
-                                <li><a href="#"><span class="fa fa-heart"></span></a></li>
-                            </ul>
+                            
                         </div>
                         <div class="product__details__widget">
                             <ul>
@@ -187,18 +204,8 @@
                 </div>
             </div>
             <div class="row" style="padding:80px">
-                <div class="d-flex justify-content-center row">
-                    <div class="d-flex flex-column col-md-8">
-                        <div class="d-flex flex-row align-items-center text-left comment-top p-2 bg-white border-bottom px-4">
-                            <div class="profile-image"></div>
-                                <div class="d-flex flex-column-reverse flex-grow-0 align-items-center votings ml-1"></div>
-                                <div class="d-flex flex-column ml-3">
-                                    <div class="d-flex flex-row post-title">
-                                        <h5></h5><span class="ml-2"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="comment_section p-2 px-4">
+                <div class="container">
+                            <div class="comment_section p-5">
                                 <form action="comments.php" method="POST" class="single_sidebar_widget search_widget">
                                     <div class="form-group">
                                         <div class="input-group add-comment-section mt-4 mb-4">
@@ -219,11 +226,8 @@
                                 </div>
                                 <?php } ?>
                             </div>
-                        </div>
                     </div>
-
-            </div>
-
+                        
         </div>
     </section>
     <!-- Product Details Section End -->
@@ -368,7 +372,7 @@
         <script src="./assets/js/main.js"></script>
         <script src="./assets/js/product.js"></script>
         <!-- <script src="assets/js/product.js"></script> -->
-
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     </body>
 

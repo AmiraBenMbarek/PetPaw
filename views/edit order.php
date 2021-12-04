@@ -4,8 +4,10 @@
 
     $orderC = new productC();
 
-    $id=$_GET['ID_ord'];
+    $id=$_POST['ID_ord'];
     $order = $orderC->getOrder2($id);
+
+    $product=$orderC->getProduct($order['ID_Pr']);
 
 ?>
 
@@ -107,7 +109,7 @@
         </header>
         <section class="product-details">
         <div class="container" style="margin-left:30%">
-            <form action="edit2.php" method="POST">
+            <form action="edit2.php?ID_ord=<?php echo $order['ID_ord']; ?>" method="POST">
                 <div class="row">
                     <h2>Order details</h2>
                 </div>
@@ -120,6 +122,7 @@
                         <tr>
                             <td><input value="<?php echo $order['ID_ord']; ?>" readonly type="number" name="ID_ord" ></td>
                             <td><input type="number" name="Quantity_ord" value="<?PHP echo $order['Quantity_ord']; ?>" ></td>
+                            <input type="hidden" name="Price_ord" value="<?PHP echo $product['Price_Pr']; ?>" >
                         </tr>
                     </table>
                     <button type="submit" class="btn">Submit</button>
