@@ -603,9 +603,9 @@
                                                                 <table id="product_table" border="1">
                                                                     <tr>
                                                                         <td>Order ID</td>
-                                                                        <td>Name</td>
-                                                                        <td>Price</td>
+                                                                        <td>Day Ordered</td>
                                                                         <td>Quantity</td>
+                                                                        <td>Price</td>
                                                                     </tr>
                                                                     <?php
                                                                         foreach($listeOrders as $order){

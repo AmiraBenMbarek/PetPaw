@@ -1,3 +1,11 @@
+<?php
+    include_once '../controller/productC.php';
+
+    $productC = new productC();
+    $listeproduits=$productC->afficherproduits(); 
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,6 +24,7 @@
     <meta name="description" content="Mega Able Bootstrap admin template made using Bootstrap 4 and it has huge amount of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
     <meta name="keywords" content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
     <meta name="author" content="codedthemes" />
+    <script src="https://www.google.com/jsapi"></script>
     <!-- Favicon icon -->
     <link rel="icon" href="assets/images/icon.png" type="image/x-icon">
     <!-- Google font-->
@@ -561,119 +570,11 @@
                                     <!-- Page-body start -->
                                     <div class="page-body ">
                                         <div class="row ">
-                                            <!-- task, page, download counter  start -->
-                                            <div class="col-xl-3 col-md-6 ">
-                                                <div class="card ">
-                                                    <div class="card-block ">
-                                                        <div class="row align-items-center ">
-                                                            <div class="col-8 ">
-                                                                <h4 class="text-c-purple ">$30200</h4>
-                                                                <h6 class="text-muted m-b-0 ">All Earnings</h6>
-                                                            </div>
-                                                            <div class="col-4 text-right ">
-                                                                <i class="fa fa-bar-chart f-28 "></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card-footer bg-c-purple ">
-                                                        <div class="row align-items-center ">
-                                                            <div class="col-9 ">
-                                                                <p class="text-white m-b-0 ">% change</p>
-                                                            </div>
-                                                            <div class="col-3 text-right ">
-                                                                <i class="fa fa-line-chart text-white f-16 "></i>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-xl-3 col-md-6 ">
-                                                <div class="card ">
-                                                    <div class="card-block ">
-                                                        <div class="row align-items-center ">
-                                                            <div class="col-8 ">
-                                                                <h4 class="text-c-green ">290+</h4>
-                                                                <h6 class="text-muted m-b-0 ">Page Views</h6>
-                                                            </div>
-                                                            <div class="col-4 text-right ">
-                                                                <i class="fa fa-file-text-o f-28 "></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card-footer bg-c-green ">
-                                                        <div class="row align-items-center ">
-                                                            <div class="col-9 ">
-                                                                <p class="text-white m-b-0 ">% change</p>
-                                                            </div>
-                                                            <div class="col-3 text-right ">
-                                                                <i class="fa fa-line-chart text-white f-16 "></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-xl-3 col-md-6 ">
-                                                <div class="card ">
-                                                    <div class="card-block ">
-                                                        <div class="row align-items-center ">
-                                                            <div class="col-8 ">
-                                                                <h4 class="text-c-red ">145</h4>
-                                                                <h6 class="text-muted m-b-0 ">Task Completed</h6>
-                                                            </div>
-                                                            <div class="col-4 text-right ">
-                                                                <i class="fa fa-calendar-check-o f-28 "></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card-footer bg-c-red ">
-                                                        <div class="row align-items-center ">
-                                                            <div class="col-9 ">
-                                                                <p class="text-white m-b-0 ">% change</p>
-                                                            </div>
-                                                            <div class="col-3 text-right ">
-                                                                <i class="fa fa-line-chart text-white f-16 "></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-xl-3 col-md-6 ">
-                                                <div class="card ">
-                                                    <div class="card-block ">
-                                                        <div class="row align-items-center ">
-                                                            <div class="col-8 ">
-                                                                <h4 class="text-c-blue ">500</h4>
-                                                                <h6 class="text-muted m-b-0 ">Downloads</h6>
-                                                            </div>
-                                                            <div class="col-4 text-right ">
-                                                                <i class="fa fa-hand-o-down f-28 "></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card-footer bg-c-blue ">
-                                                        <div class="row align-items-center ">
-                                                            <div class="col-9 ">
-                                                                <p class="text-white m-b-0 ">% change</p>
-                                                            </div>
-                                                            <div class="col-3 text-right ">
-                                                                <i class="fa fa-line-chart text-white f-16 "></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- task, page, download counter  end -->
-
                                             <!--  sale analytics start -->
                                             <div class="col-xl-8 col-md-12 ">
                                                 <div class="card ">
                                                     <div class="card-header ">
-                                                        <h5>Sales Analytics</h5>
-                                                        <span class="text-muted ">Get 15% Off on <a href="https://www.amcharts.com/ " target="_blank ">amCharts</a> licences. Use code "codedthemes " and get the discount.</span>
+                                                        <h5>Statistics</h5>
                                                         <div class="card-header-right ">
                                                             <ul class="list-unstyled card-option ">
                                                                 <li><i class="fa fa fa-wrench open-card-option "></i></li>
@@ -685,7 +586,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="card-block ">
-                                                        <div id="sales-analytics " style="height: 400px; "></div>
+                                                        <div class="pie_chart" id="pie_chart" style="margin: 0 auto;width:600px;height: 400px;"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -743,16 +644,15 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <div class="card-block ">
-                                                        <div class="table-responsive ">
-                                                            <table class="table table-hover ">
+                                                    <div class="card-block">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-hover">
                                                                 <thead>
                                                                     <tr>
                                                                         <th>
-                                                                            <div class="chk-option ">
+                                                                            <div class="chk-option">
                                                                                 <div class="checkbox-fade fade-in-primary ">
-                                                                                    <label class="check-task ">
-                                                                                    <input type="checkbox " value=" ">
+                                                                                    <label class="check-task">
                                                                                     <span class="cr ">
                                                                                             <i class="cr-icon fa fa-check txt-default "></i>
                                                                                         </span>
@@ -771,7 +671,6 @@
                                                                             <div class="chk-option ">
                                                                                 <div class="checkbox-fade fade-in-primary ">
                                                                                     <label class="check-task ">
-                                                                                    <input type="checkbox " value=" ">
                                                                                     <span class="cr ">
                                                                                                 <i class="cr-icon fa fa-check txt-default "></i>
                                                                                             </span>
@@ -795,7 +694,6 @@
                                                                             <div class="chk-option ">
                                                                                 <div class="checkbox-fade fade-in-primary ">
                                                                                     <label class="check-task ">
-                                                                                    <input type="checkbox " value=" ">
                                                                                     <span class="cr ">
                                                                                                 <i class="cr-icon fa fa-check txt-default "></i>
                                                                                             </span>
@@ -819,7 +717,6 @@
                                                                             <div class="chk-option ">
                                                                                 <div class="checkbox-fade fade-in-primary ">
                                                                                     <label class="check-task ">
-                                                                                    <input type="checkbox " value=" ">
                                                                                     <span class="cr ">
                                                                                                 <i class="cr-icon fa fa-check txt-default "></i>
                                                                                             </span>
@@ -843,7 +740,6 @@
                                                                             <div class="chk-option ">
                                                                                 <div class="checkbox-fade fade-in-primary ">
                                                                                     <label class="check-task ">
-                                                                                    <input type="checkbox " value=" ">
                                                                                     <span class="cr ">
                                                                                                 <i class="cr-icon fa fa-check txt-default "></i>
                                                                                             </span>
@@ -984,7 +880,32 @@
     </div>
     <![endif]-->
     <!-- Warning Section Ends -->
+    <script type="text/javascript">
+        window.onload = function() {
+            google.load("visualization", "1.1", {
+                packages: ["corechart"],
+                callback: 'drawChart'
+            });
+        };
 
+        function drawChart() {
+            var data = new google.visualization.arrayToDataTable([
+                ['Language', 'Rating'],
+                <?php
+                    foreach($listeproduits as $produit){
+                        echo "['".$produit['Name_Pr']."', ".$produit['Quantity_Pr']."],";
+                    }
+                ?>
+            ]);
+
+            var options = {
+                title: 'Products Stats',
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
+            chart.draw(data, options);
+        }
+    </script>
     <!-- Required Jquery -->
     <script type="text/javascript " src="assets/js/jquery/jquery.min.js "></script>
     <script type="text/javascript " src="assets/js/jquery-ui/jquery-ui.min.js "></script>
