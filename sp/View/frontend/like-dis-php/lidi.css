@@ -1,0 +1,27 @@
+/* (A) WRAPPER */
+.lidiWrap {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #c5c5c5;
+  background: #eee;
+  max-width: 150px;
+  justify-content: space-around;
+}
+.lidiWrap.count { max-width: 250px; }
+
+/* (B) LIKE-DISLIKE BUTTONS */
+.lidiUp, .lidiDown {
+  width: 24px; height: 24px;
+  background-image: url("lidi.png");
+  cursor: pointer;
+}
+.lidiDown { background-position: -48px; }
+.lidiUp.set { background-position: -24px; }
+.lidiDown.set { background-position: -72px; }
+
+/* (C) LIKE-DISLIKE COUNT */
+.lidiUpCount, .lidiDownCount {
+  font-size: 20px;
+  color: #7c7c7c;
+}
