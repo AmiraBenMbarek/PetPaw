@@ -603,7 +603,7 @@
 
                                                             <div class="form-group form-default">
                                                             <label class="">date_debut</label>
-                                                                <input type="datetime"   id="date_ev" name="date_ev" onblur="saisirdate_recuperation()" class="form-control" required value="<?php echo $events['date_ev']; ?>" >
+                                                                <input type="datetime-local"   id="date_ev" name="date_ev" onblur="saisirdate_recuperation()" class="form-control" required value="<?php echo $events['date_ev']; ?>" >
                                                                 <span class="form-bar"></span>
                                                                 <p id="errorDF" class="erreur" ></p>
                                                 
@@ -611,7 +611,7 @@
 
                                                             <div class="form-group form-default">
                                                             <label class="">date_fin</label>
-                                                                <input type="datetime"  id="date_fin" name="date_fin"  onblur="saisirdate_fin()" class="form-control" required   value="<?php echo $events['date_fin']; ?>">
+                                                                <input type="datetime-local"  id="date_fin" name="date_fin"  onblur="saisirdate_fin()" class="form-control" required   value="<?php echo $events['date_fin']; ?>">
                                                                 <span class="form-bar"></span>
                                                                 <p id="errorDF1" class="erreur" ></p>
                                                                

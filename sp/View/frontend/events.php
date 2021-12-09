@@ -257,7 +257,7 @@ if (isset($_POST['submitform1'])) {
                                 <?php
                                 require "like-dis-php/2-reactions.php";
                                 $id = $events['id_ev']; // POST/PRODUCT/WHATEVER ID
-                                $uid = 2; // USER ID, USE $_SESSION IN YOUR PROJECT
+                                $uid = 3; // USER ID, USE $_SESSION IN YOUR PROJECT
                                 $reacts = $_REACT->get($id, $uid);
                                 ?>
 
@@ -417,7 +417,7 @@ if (isset($_POST['submitform1'])) {
 
          
             <?php foreach($emplois as $event){
-              if( $event['start']<=$events['date_ev'] &&   $events['date_fin']>=$event['end']  ){
+              if( $event['start']>=$events['date_ev'] &&   $events['date_fin']>=$event['end']  ){
             ?>
             
                   <div class="row schedule-item">

@@ -1,7 +1,7 @@
 <?php
 // (A) INIT
 require "2-reactions.php";
-$uid = 2; // USER ID, USE $_SESSION IN YOUR PROJECT
+$uid = 3; // USER ID, USE $_SESSION IN YOUR PROJECT
 
 // (B) SAVE/UPDATE REACTION
 if (!$_REACT->save($_POST["id"], $uid, $_POST["react"])) {
