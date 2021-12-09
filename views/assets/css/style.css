@@ -3832,67 +3832,6 @@ hr {
     display: block
 }
 
-.pagination-area {
-    padding-top: 50px
-}
-
-.pagination-area .page-item {
-    margin: 0
-}
-
-.pagination-area .page-item:first-child {
-    margin: 0
-}
-
-.pagination-area .page-item:first-child .page-link {
-    margin-left: 0;
-    border-top-left-radius: 0%;
-    border-bottom-left-radius: 0%
-}
-
-.pagination-area .page-item:last-child .page-link {
-    border-top-right-radius: 0%;
-    border-bottom-right-radius: 0%
-}
-
-.pagination-area .page-item.active .page-link {
-    z-index: 1;
-    border: 0;
-    position: relative;
-    box-shadow: none;
-    outline: 0;
-    color: #fff;
-    background: #3B4855
-}
-
-.pagination-area .page-link {
-    border: 0;
-    font-size: 15px;
-    text-align: center;
-    background: none;
-    box-shadow: none;
-    outline: 0;
-    color: #fff;
-    padding: 16px 18px;
-    background: #fff;
-    margin: 0 7px;
-    border-radius: 0%;
-    border: 1px solid #f0f0f0
-}
-
-@media (max-width: 575px) {
-    .pagination-area .page-link {
-        margin: 0 4px;
-        padding: 8px 11px
-    }
-}
-
-.pagination-area .page-link:hover {
-    color: #fff;
-    background: #3B4855;
-    border: 1px solid transparent
-}
-
 .page-notification {
     background: #EFF5F8;
     padding: 13px 0;
@@ -4777,41 +4716,6 @@ hr {
     height: 1px;
     background: #eee;
     margin: 30px 0px
-}
-
-.blog-pagination {
-    margin-top: 80px
-}
-
-.blog-pagination .page-link {
-    font-size: 14px;
-    position: relative;
-    display: block;
-    padding: 0;
-    text-align: center;
-    margin-left: -1px;
-    line-height: 45px;
-    width: 45px;
-    height: 45px;
-    border-radius: 0 !important;
-    color: #8a8a8a;
-    border: 1px solid #f0e9ff;
-    margin-right: 10px
-}
-
-.blog-pagination .page-link i,
-.blog-pagination .page-link span {
-    font-size: 13px
-}
-
-.blog-pagination .page-item.active .page-link {
-    background-color: #fbf9ff;
-    border-color: #f0e9ff;
-    color: #888888
-}
-
-.blog-pagination .page-item:last-child .page-link {
-    margin-right: 0
 }
 
 .single-post-area .blog_details {

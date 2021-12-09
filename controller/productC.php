@@ -5,17 +5,35 @@ include_once '../model/productM.php';
 
 class productC
 {
-
     function afficherproduits(){
-        $sql="SELECT * FROM `product`";
+        if(isset($_GET['page']) && !empty($_GET['page'])){
+            $currentPage = (int) strip_tags($_GET['page']);
+        }else{
+            $currentPage = 1;
+        }
+        $sql="SELECT COUNT(*) AS nbr_pages FROM `product`";
         $db = config::getConnexion();
-        try{
-            $liste = $db->query($sql);
-            return $liste;
-        }
-        catch(Exception $e){
-            die('erreur: '. $e->getMessage());
-        }
+        $query = $db->prepare($sql);
+        $query->execute();
+        $result = $query->fetch();
+        $nbr_pages = (int) $result['nbr_pages'];
+        //$pages = ceil($nbr_pages / 9);
+        $page_number = ($currentPage * 9) - 9;
+
+        $sql = "SELECT * FROM `product` LIMIT $page_number, 9;";
+			$query = $db->prepare($sql);
+			$query->execute();
+		    return $query->fetchAll();
+
+        // try{
+        //     $liste = $db->query($sql);
+        //     return $liste;
+        // }
+        // catch(Exception $e){
+        //     die('erreur: '. $e->getMessage());
+        // }
+			
+			
     }
 
     function getProduct($id){
@@ -33,9 +51,9 @@ class productC
         }
     }
 
-    function addOrder($id,$price,$qte){
-        $sql="INSERT INTO orders (ID_ord , Date_ord,Quantity_ord, Price_ord, ID_Pr)
-			VALUES (NULL,CURDATE(),$qte,$price, $id)";
+    function addOrder($id,$price,$qte,$id_panier){
+        $sql="INSERT INTO orders (ID_ord , Date_ord,Quantity_ord, Price_ord, ID_Pr,id_panier)
+			VALUES (NULL,CURDATE(),$qte,$price, $id, $id_panier)";
 			$db = config::getConnexion();
 			try{
 				$query = $db->prepare($sql);
@@ -46,14 +64,14 @@ class productC
             }
         }
 
-    function getOrder($id){
-        $sql="SELECT * from orders where ID_Pr = $id";
+    function getOrder(){
+        $sql="SELECT * from orders";
         $db = config::getConnexion();
         try{
             $query=$db->prepare($sql);
             $query->execute();
 
-            $produit=$query->fetch();
+            $produit=$query->fetchAll();
             return $produit;
         }
         catch (Exception $e){
@@ -89,10 +107,11 @@ class productC
         }
     }
 
-    function editOrder($id,$qte){
+    function editOrder($id,$qte,$price){
         
         $sql="UPDATE orders SET 
-                Quantity_ord = $qte
+                Quantity_ord = $qte,
+                Price_ord = $qte*$price
             WHERE ID_ord = $id";
         $db = config::getConnexion();
         try{
@@ -170,8 +189,6 @@ class productC
             }
         }
 
-
-
     function nameAsc()
     {
         $sql="SELECT * FROM `product` ORDER BY `product`.`Name_Pr` ASC";
@@ -221,6 +238,68 @@ class productC
         }
         catch(Exception $e){
             die('erreur: '. $e->getMessage());
+        }
+    }
+    //$total_products = $pdo->query('SELECT * FROM products')->rowCount();
+
+    function pagination()
+	{
+        $db = config::getConnexion();
+        $sql = 'SELECT COUNT(*) AS nbr_pages FROM `product`;';
+        $query = $db->prepare($sql);
+        $query->execute();
+        $result = $query->fetch();
+        $nbr_pages = (int) $result['nbr_pages'];
+        $pages = ceil($nbr_pages / 9);
+        return $pages;
+	}
+
+    function addProductToCart($id,$nom,$price,$quantity)
+    {
+        $sql="INSERT INTO panier (id_panier ,nom_panier, qte_panier,prix_total, ID_Pr)
+			VALUES (NULL,'$nom',$quantity, $price, $id)";
+			$db = config::getConnexion();
+			try{
+				$query = $db->prepare($sql);
+				$query->execute();			
+			}
+			catch (Exception $e){
+				echo 'Erreur: '.$e->getMessage();
+            }
+    }
+
+    function displayCart(){
+        $sql="SELECT * FROM `panier`";
+        $db = config::getConnexion();
+        try{
+            $liste = $db->query($sql);
+            return $liste;
+        }
+        catch(Exception $e){
+            die('erreur: '. $e->getMessage());
+        }
+    }
+
+    function totalCart()
+    {
+        $db = config::getConnexion();
+        $sql="SELECT SUM(qte_panier * prix_total) AS prix FROM panier";
+        $query = $db->prepare($sql);
+        $query->execute();
+        $total = $query->fetch();
+        return $total;
+        
+    }
+
+    function deleteCart(){
+        $sql="DELETE FROM panier";
+        $db = config::getConnexion();
+        $req=$db->prepare($sql);
+        try{
+            $req->execute();
+        }
+        catch(Exception $e){
+            die('error:'. $e->getMessage());
         }
     }
 }

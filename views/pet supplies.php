@@ -1,9 +1,16 @@
 <?php
     include_once '../controller/productC.php';
 
+    if(isset($_GET['page']) && !empty($_GET['page'])){
+        $currentPage = (int) strip_tags($_GET['page']);
+    }else{
+        $currentPage = 1;
+    }
+
     $productC = new productC();
 
     $listeproduits=$productC->afficherproduits();
+    $nbr_pages=$productC->pagination();
 
 ?>
 
@@ -121,7 +128,7 @@
     </div>
     <script type="text/javascript">
 function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
 }
 </script>
 
@@ -226,11 +233,26 @@ function googleTranslateElementInit() {
                                 
                                     <ul class="product__hover">
                                         <li><a href="#"><span class="fa fa-heart"></span></a></li>
-                                        <li><a href="#"><span class="fa fa-shopping-cart"></span></a></li>
+                                        <!-- <li>
+                                            <a href="cart.php?quantity_cart=1&price_cart=<?php //echo $produit['Price_Pr']; ?>&id_cart=<?php //echo $produit['ID_Pr']; ?>&name_cart=<?php //echo $produit['Name_Pr']; ?>">
+                                                <span class="fa fa-shopping-cart"></span>
+                                            </a>
+                                        </li> -->
+                                        <li>
+                                            <form method="POST" action="addCart.php">
+                                                <input type="hidden" name="quantity_cart" value="1" >
+                                                <input type="hidden" name="id_cart" value="<?php echo $produit['ID_Pr']?>" >
+                                                <input type="hidden" name="name_cart" value="<?php echo $produit['Name_Pr']?>" >
+                                                <input type="hidden" name="price_cart" value="<?php echo $produit['Price_Pr']?>" >
+                                                <button type="submit" name="add_to_cart" class="cart-btn btn">
+                                                    <span class="fa fa-shopping-cart"></span> 
+                                                </button>
+                                            </form>
+                                        </li>
                                     </ul>
                             </div>
                                 <div class="product__item__text">
-                                    <h6><a href="product.php?ID_Pr=<?php echo $produit['ID_Pr']; ?>"><?php echo $produit['Name_Pr']; ?></a></h6>
+                                    <h6><a href="product.php?ID_Pr=<?php echo $produit['ID_Pr']; ?>" ><?php echo $produit['Name_Pr']; ?></a></h6>
                                     <div class="rating">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -238,23 +260,28 @@ function googleTranslateElementInit() {
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
                                     </div>
-                                    <div class="product__price"><?php echo $produit['Price_Pr']; ?> DT</div>
+                                    <div class="product__price" style="margin-bottom:70px"><?php echo $produit['Price_Pr']; ?> DT</div>
                                 </div>
                         </div>
                         <?php } ?>
                         <div class="col-lg-12 text-center">
-                            <div class="pagination__option">
-                                <a href="#">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <a href="#"><i class="fa fa-angle-right"></i></a>
-                            </div>
+                            <ul class="pagination__option">
+                                <li class="pagination <?php echo ($currentPage == 1) ? "disabled" : "" ?>">
+                                    <a href="pet supplies.php?page=<?php echo $currentPage - 1 ?>" class="page-link"><i class="fa fa-angle-left"></i></a>
+                                </li>
+
+                                <?php for($page = 1; $page <= $nbr_pages; $page++): ?>
+                                    <li class="pagination <?php echo ($currentPage == $page) ? "active" : "" ?>">
+                                        <a href="pet supplies.php?page=<?php echo $page ?>" class="page-link"><?php echo $page ?></a>
+                                    </li>
+                                <?php endfor ?>
+
+                                <li class="pagination <?php echo ($currentPage == $nbr_pages) ? "disabled" : "" ?>">
+                                    <a href="pet supplies.php?page=<?php echo $currentPage + 1 ?>" class="page-link"><i class="fa fa-angle-right"></i></a>
+                                </li>
+                            </ul>
                         </div>
                         
-                    </div>
-                </div>
-                        
-                    
                     </div>
                 </div>
             </section>

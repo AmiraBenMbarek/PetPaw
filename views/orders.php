@@ -4,26 +4,24 @@
 
     $orderC = new productC();
 
-    $id=$_POST['ID_Pr'];
-
-    if (isset($id)){
-        $order = $orderC->getOrder($id);
-    }
-    echo $order['ID_ord'];
-    $qte=$order['Quantity_ord'];
-    $price=$order['Price_ord'];
+    $orders = $orderC->getOrder();
     
-    $mail=$_POST['send_mail'];
+    $mail=$_GET['mail'];
+    
+    $message = "Thank you for purchasing from our shop
 
-    mail($mail,'Order Confirmed',"Your order was placed successfully
+Your order was placed successfully
+";
 
-     Total price: $price
+    $cart_items=$orderC->displayCart();
+    foreach($cart_items as $cart){
+    $message .= $cart['qte_panier']." x ".$cart['nom_panier']."     " .$cart['prix_total']." DT
+";
+    }
 
-     Quantity ordered: $qte",'From: mirabm48@gmail.com');
+    mail($mail,'Order Confirmed',$message,'From: mirabm48@gmail.com');
 
-
-    // $listeproduits=$productC->afficherproduits(); 
-
+    //$orderC->deleteCart();
 ?>
 
     <!doctype html>
@@ -135,27 +133,30 @@
                         <td>Price</td>
                         <td>Quantity</td>
                     </tr>
+                    <?php foreach($orders as $order){ ?>
                     <tr>
                         <td><?php echo $order['ID_ord']; ?></td>
                         <td><?php echo $order['Date_ord']; ?></td>
                         <td><?php echo $order['Price_ord']; ?></td>
                         <td><?php echo $order['Quantity_ord']; ?></td>
+                        <td>
+                            <form action="edit order.php" method="POST">
+                                <button type="submit" class="btn">Edit Order
+                                <input type="hidden" value=<?PHP echo $order['ID_ord']; ?> name="ID_ord">
+                                </button>
+                            </form>
+                        </td>
+                        <td>
+                        <form action="cancel order.php" method="POST">
+                            <button type="submit" class="btn">Cancel Order
+                                <input type="hidden" value=<?PHP echo $order['ID_ord']; ?> name="ID_ord">
+                            </button>
+                        </form>
+                        </td>
                     </tr>
-                </table>
-            </div>
-            <div class="row">
-                <form action="edit order.php" method="POST">
-                    <button type="submit" class="btn">Edit Order
-                    <input type="hidden" value=<?PHP echo $order['ID_ord']; ?> name="ID_ord">
-                    </button>
-                </form>
-
-                <form action="cancel order.php" method="POST">
-                    <button type="submit" class="btn">Cancel Order
-                        <input type="hidden" value=<?PHP echo $order['ID_ord']; ?> name="ID_ord">
-                    </button>
-                </form>
-
+                    <?php } ?>
+                </table>                
+               
             </div>
         </div>
     </section>

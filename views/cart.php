@@ -2,33 +2,23 @@
     include_once '../controller/productC.php';
 
     $productC = new productC();
-    // $id=$_POST['ID_Pr'];
-    // if (isset($id)){
-    //     $product = $productC->getProduct($id);  
-    // }
-
     $cart_items=$productC->displayCart();
-    // foreach($cart_items as $cart){
-    //     $productC->addOrder($cart['ID_Pr'],$cart['prix_total'],$cart['qte_panier'],$cart['id_panier']);
-    // }
-    //echo $_POST['price_cart'];
-    // $price=$qte*$product['Price_Pr'];
 
-    //     $productC->addOrder($id,$price,$qte);
-    
+    $total=$productC->totalCart();    
 ?>
 
-    <!doctype html>
+<!doctype html>
     <html class="no-js" lang="en">
 
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Product details</title>
+        <title>Cart details</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="site.webmanifest">
         <link rel="shortcut icon" type="image/x-icon" href="assets/img/icon.png">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
 
         <!-- CSS here -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -45,7 +35,7 @@
         <link rel="stylesheet" href="assets/css/slick.css">
         <link rel="stylesheet" href="assets/css/nice-select.css">
         <link rel="stylesheet" href="assets/css/pet supplies.css">
-
+        <link rel="stylesheet" href="assets/css/cart.css">
 
     </head>
 
@@ -72,7 +62,7 @@
                                 <!-- Logo -->
                                 <div class="col-xl-2 col-lg-2">
                                     <div class="logo">
-                                        <a href="index.html"><img id="logo" src="assets/img/logo/logo2.png" alt=""></a>
+                                        <a href="index.html"><img src="assets/img/logo/logo2.png" alt=""></a>
                                     </div>
                                 </div>
                                 <div class="col-xl-10 col-lg-10">
@@ -115,96 +105,73 @@
             <!-- Header End -->
         </header>
 
-    <div class="breadcrumb-option">
+        <div class="breadcrumb-option">
         <div class="container">
             <div class="row">
                 <div class="col-lg-10">
                     <div class="breadcrumb__links">
-                    <a href="pet supplies.php">Products</a>
-                        <i class="fas fa-angle-right"></i>
-                        <a href="product.php">Product Detail</a>
-                        <i class="fas fa-angle-right"></i>
-                        <span>Checkout</span>
-                    </div>
-                </div>
-                <div class="lg-10">
-                    <div class="pdf_download" style="cursor:pointer">
-                        <div class="printer" >
-                            <i class="fa fa-print"></i>
-                            <span id="download_pdf">Download receipt</span>
-                        </div>
+                        <a href="pet supplies.php">
+                        <i class="fas fa-angle-double-left"></i>
+                        Back To Products</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <main>
-    <!-- Checkout Section Begin -->
-    <section class="checkout spad">
-        <div class="container">
-            <form action="addOrders.php" class="single_sidebar_widget search_widget" method="POST">
-                <div class="row">                        
-                        <div class="col-lg-4" style="margin-left:30%;">
-                            <div class="checkout__order" style="width:450px;">
-                                <div id="receipt">
-                                    
-                                    <img src="assets/img/logo/logo2.png" alt="">
-                                    <h2 style="margin-left:50px;margin-top:20px;margin-bottom:20px;">Thank you for your purchase!</h2>
-                                    <h5>Your order</h5>
-                                    <div class="checkout__order__product">
-                                        <ul>
-                                            <li>
-                                                <span class="top__text">Product</span>
-                                                <span style="margin-right:20px" class="top__text__right">Total</span>
-                                            </li>
-                                            <li>
-                                            </li>
-                                            <?php foreach($cart_items as $cart){ ?>
-                                            <li><?php echo $cart['qte_panier'] ?> X <?php echo $cart['nom_panier'] ?><span style="margin-right:20px"><?php echo $cart['prix_total'] ?> DT</span></li>
-                                            <?php } ?>
-                                        </ul>
-                                    </div>
-                                    <!-- <div class="checkout__order__total">
-                                        <ul>
-                                            <li>Subtotal <span>$ 750.0</span></li>
-                                            <li>Total <span>$ 750.0</span></li>
-                                        </ul>
-                                    </div> -->
-                                    <div class="checkout__order__widget">
-                                        <!-- <label for="o-acc">
-                                            Create an acount?
-                                            <input type="checkbox" id="o-acc">
-                                            <span class="checkmark"></span>
-                                        </label> -->
-                                        <p>Payment method</p>
-                                        <label for="check-payment">
-                                            Cash payment
-                                            <input type="checkbox" id="check-payment">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <label for="paypal">
-                                            PayPal
-                                            <input type="checkbox" checked id="paypal">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="comment_section">
-                                
-                                <div class="form-group search_widget">
-                                    <input type="email" class="form-control" name="send_mail" placeholder="write your email to get a notification" onfocus="this.placeholder = ''" onblur="this.placeholder = 'write your email to get a notification'">
-                                </div>
-                                </div>
-                                    <button type="submit" class="cart_btn btn">Place order</button>
-                            </div>
-                        </div>
-                </form>
-            </div>
-        </section>
-        <!-- Checkout Section End -->
 
-    </main>
-        <footer>
+    <main class="main_cart">
+        <div class="basket">
+            <div class="basket-labels">
+                <ul>
+                    <li class="item item-heading">Item</li>
+                    <li class="price">Price</li>
+                    <li class="quantity">Quantity</li>
+                    <li class="">Subtotal</li>
+                    <li class="remove_cart_btn"></li>
+                </ul>
+            </div>
+            <?php foreach($cart_items as $cart){ ?>
+            <div class="basket-product">
+                <div class="item">
+                    <div class="product-details">
+                        <h1 class="product_name"><strong><span class="item-quantity"><?php echo $cart['qte_panier']; ?></span> x </strong><?php echo $cart['nom_panier']; ?></h1>
+                    </div>
+                </div>
+                <div class="price"><?php echo $cart['prix_total']; ?></div>
+                <div class="quantity">
+                    <input type="number" name="quantity_cart" id="quantity_field" value="<?php echo $cart['qte_panier']; ?>" min="1" class="quantity-field">
+                </div>
+                <div class="subtotal"><?php echo $cart['prix_total']*$cart['qte_panier']; ?></div>
+                <div class="remove quantity">
+                    <button><i class="fa fa-window-close"></i></button>
+                </div>
+            </div>
+            <?php } ?>
+        </div>
+    <aside>
+        <form action="checkout.php" method="POST">
+            <div class="summary">
+                <div class="summary-total-items"><span class="total-items"></span> Items in your Bag</div>
+                <div class="summary-subtotal">
+                    <div class="subtotal-title">Subtotal</div>
+                    <div class="subtotal-value final-value" id="basket-subtotal"><?php echo $total['prix']; ?></div>
+                    <input type="hidden" name="price_cart" value="<?php echo $total['prix']; ?>">
+                </div>
+                
+                <div class="summary-total">
+                    <div class="total-title">Total</div>
+                    <div class="total-value final-value" id="basket-total"><?php echo $total['prix']; ?></div>
+                </div>
+                <div class="summary-checkout">
+                    <button type="submit" class="checkout-cta btn">Proceed to Checkout</button>
+                </div>
+            </div>
+        </form>
+    </aside>
+  </main>
+
+
+    <footer>
             <div class="footer-wrapper">
                 <!-- Footer Start-->
                 <div class="footer-area footer-padding">
@@ -342,8 +309,9 @@
         <!-- Jquery Plugins, main Jquery -->
         <script src="./assets/js/plugins.js"></script>
         <script src="./assets/js/main.js"></script>
-        <script src="./assets/js/product.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="./assets/js/cart.js"></script>
+
+
     </body>
 
     </html>

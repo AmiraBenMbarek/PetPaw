@@ -111,7 +111,7 @@
             <div class="row">
                 <div class="col-lg-10">
                     <div class="breadcrumb__links">
-                        <a href="product.php">
+                        <a href="pet supplies.php">
                         <i class="fas fa-angle-double-left"></i>
                         Back To Products</a>
                     </div>
@@ -131,7 +131,7 @@
 
     <script type="text/javascript">
 function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
 }
 </script>
 
@@ -148,6 +148,10 @@ function googleTranslateElementInit() {
                     </div>
                 </div>
                 <div class="col-lg-6">
+                        <div style="float:right;">
+                            <a href="#comments">
+                            <i class="fa fa-comments" style="font-size:48px;color:purple"></i></a>
+                        </div>
                     <div class="product__details__text">
                         <h2><?php echo $product['Name_Pr'] ?></h2>
                         <div class="rating">
@@ -161,24 +165,24 @@ function googleTranslateElementInit() {
                         <div class="product__details__price"><h4><?php echo $product['Price_Pr'] ?> DT</h4></div>
                         <p><?php echo $product['Description_Pr'] ?></p>
                         <div class="product__details__button">
-                            <form action="checkout.php" method="POST">
+                            <form action="addCart.php" method="POST">
                                 <div class="quantity">
                                     <span>Quantity:</span>
                                     <div class="pro-qty">
-                                        <!-- <span class="dec qtybtn">-</span> -->
-                                        <input type="number" name="Quantity_ord" min="1" value="1">
-                                        <!-- <span class="inc qtybtn">+</span> -->
+                                        <input type="number" name="quantity_cart" min="1" max="<?php echo $product['Quantity_Pr']?>" value="1">
                                     </div>
                                 </div>
-                                <input type="hidden" name="ID_Pr" value="<?php echo $product['ID_Pr']?>" >
-                                <button type="submit" class="cart-btn btn">
+                                <input type="hidden" name="id_cart" value="<?php echo $product['ID_Pr']?>" >
+                                <input type="hidden" name="name_cart" value="<?php echo $product['Name_Pr']?>" >
+                                <input type="hidden" name="price_cart" value="<?php echo $product['Price_Pr']?>" >
+                                <button type="submit" name="add_to_cart" class="cart-btn btn">
                                     <span class="fa fa-shopping-cart"></span> 
                                         Add to cart
                                 </button>
-                                <ul class="icon_hover">
-                                    <li><a href="#"><span class="fa fa-heart"></span></a></li>
-                                </ul>
                             </form>
+                            <ul class="icon_hover">
+                                <li><a href="#"><span class="fa fa-heart"></span></a></li>
+                            </ul>
                             
                         </div>
                         <div class="product__details__widget">
@@ -203,7 +207,7 @@ function googleTranslateElementInit() {
                     </div>
                 </div>
             </div>
-            <div class="row" style="padding:80px">
+            <div id="comments" class="row" style="padding:80px">
                 <div class="container">
                             <div class="comment_section p-5">
                                 <form action="comments.php" method="POST" class="single_sidebar_widget search_widget">
