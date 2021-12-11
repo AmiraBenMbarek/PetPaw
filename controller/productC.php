@@ -114,6 +114,19 @@ class productC
             die('erreur: '. $e->getMessage());
         }
     }
+
+    function pie_chart()
+    {
+        $sql="SELECT count(`comments`.id_cmt) AS cmt,`product`.Name_Pr FROM `comments` JOIN `product` ON `comments`.ID_Pr = `product`.ID_Pr GROUP BY `product`.ID_Pr";
+        $db = config::getConnexion();
+        try{
+            $liste = $db->query($sql);
+            return $liste;
+        }
+        catch(Exception $e){
+            die('erreur: '. $e->getMessage());
+        }
+    }
 }
 
 ?>

@@ -2,8 +2,7 @@
     include_once '../controller/productC.php';
 
     $productC = new productC();
-    $listeproduits=$productC->afficherproduits(); 
-
+    $stats=$productC->pie_chart();
 ?>
 
 <!DOCTYPE html>
@@ -586,7 +585,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="card-block ">
-                                                        <div class="pie_chart" id="pie_chart" style="margin: 0 auto;width:600px;height: 400px;"></div>
+                                                        <div class="pie-chart" id="pie-chart" style="margin: 0 auto;width:600px;height: 400px;"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -836,50 +835,7 @@
             </div>
         </div>
     </div>
-    <!-- Warning Section Starts -->
-    <!-- Older IE warning message -->
-    <!--[if lt IE 10]>
-    <div class="ie-warning ">
-        <h1>Warning!!</h1>
-        <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
-        <div class="iew-container ">
-            <ul class="iew-download ">
-                <li>
-                    <a href="http://www.google.com/chrome/ ">
-                        <img src="assets/images/browser/chrome.png " alt="Chrome ">
-                        <div>Chrome</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.mozilla.org/en-US/firefox/new/ ">
-                        <img src="assets/images/browser/firefox.png " alt="Firefox ">
-                        <div>Firefox</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://www.opera.com ">
-                        <img src="assets/images/browser/opera.png " alt="Opera ">
-                        <div>Opera</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.apple.com/safari/ ">
-                        <img src="assets/images/browser/safari.png " alt="Safari ">
-                        <div>Safari</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie ">
-                        <img src="assets/images/browser/ie.png " alt=" ">
-                        <div>IE (9 & above)</div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <p>Sorry for the inconvenience!</p>
-    </div>
-    <![endif]-->
-    <!-- Warning Section Ends -->
+
     <script type="text/javascript">
         window.onload = function() {
             google.load("visualization", "1.1", {
@@ -892,17 +848,17 @@
             var data = new google.visualization.arrayToDataTable([
                 ['Language', 'Rating'],
                 <?php
-                    foreach($listeproduits as $produit){
-                        echo "['".$produit['Name_Pr']."', ".$produit['Quantity_Pr']."],";
+                    foreach ($stats as $stat){
+                        echo "['".$stat['Name_Pr']."', ".$stat['cmt']."],";
                     }
                 ?>
             ]);
 
             var options = {
-                title: 'Products Stats',
+                title: 'Products Popularity',
             };
 
-            var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
+            var chart = new google.visualization.PieChart(document.getElementById('pie-chart'));
             chart.draw(data, options);
         }
     </script>

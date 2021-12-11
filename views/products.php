@@ -31,9 +31,7 @@
                 $_POST['Description_Pr']
             );
             $productC->ajouterProduit($productM);  
-            //$productU->modifierProduit($productM, $_POST["ID"]);
             header('Location:products.php');
-            //$productD->supprimerProduit($_POST["ID_Pr"]);
       
     }
     $listeproduits=$productC->afficherproduits(); 
@@ -148,7 +146,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="index.html">
+                        <a href="index.php">
                             <img class="img-fluid" src="assets/images/logo.png" alt="Theme-Logo" height="15" width="147" />
                         </a>
                         <a class="mobile-options waves-effect waves-light">
@@ -293,7 +291,7 @@
                                 <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Layout</div>
                                 <ul class="pcoded-item pcoded-left-item">
                                     <li class="">
-                                        <a href="index.html" class="waves-effect waves-dark">
+                                        <a href="index.php" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
                                             <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
                                             <span class="pcoded-mcaret"></span>
@@ -579,7 +577,7 @@
                                         <div class="col-md-4">
                                             <ul class="breadcrumb-title">
                                                 <li class="breadcrumb-item">
-                                                    <a href="index.html"> <i class="fa fa-home"></i> </a>
+                                                    <a href="index.php"> <i class="fa fa-home"></i> </a>
                                                 </li>
                                                 <li class="breadcrumb-item"><a href="#!">Purchases</a>
                                                 </li>
