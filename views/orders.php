@@ -5,21 +5,19 @@
     $orderC = new productC();
 
     $orders = $orderC->getOrder();
-    
-    $mail=$_GET['mail'];
-    
-    $message = "Thank you for purchasing from our shop
+        
+//     $message = "Thank you for purchasing from our shop
 
-Your order was placed successfully
-";
+// Your order was placed successfully
+// ";
 
-    $cart_items=$orderC->displayCart();
-    foreach($cart_items as $cart){
-    $message .= $cart['qte_panier']." x ".$cart['nom_panier']."     " .$cart['prix_total']." DT
-";
-    }
+//     $cart_items=$orderC->displayCart();
+//     foreach($cart_items as $cart){
+//     $message .= $cart['qte_panier']." x ".$cart['nom_panier']."     " .$cart['prix_total']." DT
+// ";
+//     }
 
-    mail($mail,'Order Confirmed',$message,'From: mirabm48@gmail.com');
+//     mail($_GET['mail'],'Order Confirmed',$message,'From: mirabm48@gmail.com');
 
     //$orderC->deleteCart();
 ?>
@@ -30,7 +28,7 @@ Your order was placed successfully
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Product details</title>
+        <title>Products ordered</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="site.webmanifest">
@@ -78,7 +76,7 @@ Your order was placed successfully
                                 <!-- Logo -->
                                 <div class="col-xl-2 col-lg-2">
                                     <div class="logo">
-                                        <a href="index.html"><img src="assets/img/logo/logo2.png" alt=""></a>
+                                        <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
                                     </div>
                                 </div>
                                 <div class="col-xl-10 col-lg-10">
@@ -120,18 +118,34 @@ Your order was placed successfully
             </div>
             <!-- Header End -->
         </header>
+    <div class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__links" style="float:right;">
+                        <div class="orders_hover">
+                            <a href="" class="orders">
+                            <i class="fa fa-truck"></i>Proceed to shipping</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
         <section class="product-details">
         <div class="container" style="margin-left:10%">
             <div class="row">
                 <h2>Order details</h2>
             </div>
             <div class="row">
-                <table id="orders_table" border="1">
+                <table id="orders_table">
                     <tr>
-                        <td>Order ID</td>
-                        <td>Date</td>
+                        <td>Order Reference</td>
+                        <td>Date Ordered</td>
                         <td>Price</td>
                         <td>Quantity</td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <?php foreach($orders as $order){ ?>
                     <tr>
@@ -141,14 +155,14 @@ Your order was placed successfully
                         <td><?php echo $order['Quantity_ord']; ?></td>
                         <td>
                             <form action="edit order.php" method="POST">
-                                <button type="submit" class="btn">Edit Order
+                                <button type="submit" class="btn">Edit
                                 <input type="hidden" value=<?PHP echo $order['ID_ord']; ?> name="ID_ord">
                                 </button>
                             </form>
                         </td>
                         <td>
                         <form action="cancel order.php" method="POST">
-                            <button type="submit" class="btn">Cancel Order
+                            <button type="submit" class="btn">Cancel
                                 <input type="hidden" value=<?PHP echo $order['ID_ord']; ?> name="ID_ord">
                             </button>
                         </form>
@@ -173,7 +187,7 @@ Your order was placed successfully
                                     <div class="single-footer-caption mb-30">
                                         <!-- logo -->
                                         <div class="footer-logo mb-35">
-                                            <a href="index.html"><img src="assets/img/logo/logo2_footer2.png" alt=""></a>
+                                            <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
                                         </div>
                                         <div class="footer-tittle">
                                             <div class="footer-pera">

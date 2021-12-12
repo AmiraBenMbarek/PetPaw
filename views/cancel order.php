@@ -5,6 +5,6 @@
 
     $productC->cancelOrder($_POST["ID_ord"]);
 
-        header('Location:pet supplies.php');
+        header('Location:orders.php');
 
 ?>

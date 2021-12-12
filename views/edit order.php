@@ -17,7 +17,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Product details</title>
+        <title>Edit order</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="site.webmanifest">
@@ -65,7 +65,7 @@
                                 <!-- Logo -->
                                 <div class="col-xl-2 col-lg-2">
                                     <div class="logo">
-                                        <a href="index.html"><img src="assets/img/logo/logo2.png" alt=""></a>
+                                        <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
                                     </div>
                                 </div>
                                 <div class="col-xl-10 col-lg-10">
@@ -116,7 +116,7 @@
                 <div class="row">
                     <table id="product_table" border="1">
                         <tr>
-                            <td>Order ID</td>
+                            <td>Order Reference</td>
                             <td>Quantity</td>
                         </tr>
                         <tr>
@@ -143,7 +143,7 @@
                                     <div class="single-footer-caption mb-30">
                                         <!-- logo -->
                                         <div class="footer-logo mb-35">
-                                            <a href="index.html"><img src="assets/img/logo/logo2_footer2.png" alt=""></a>
+                                            <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
                                         </div>
                                         <div class="footer-tittle">
                                             <div class="footer-pera">

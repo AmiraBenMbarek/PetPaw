@@ -24,7 +24,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Product details</title>
+        <title>Checkout</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="site.webmanifest">
@@ -72,7 +72,7 @@
                                 <!-- Logo -->
                                 <div class="col-xl-2 col-lg-2">
                                     <div class="logo">
-                                        <a href="index.html"><img id="logo" src="assets/img/logo/logo2.png" alt=""></a>
+                                        <a href="index.html"><img id="logo" src="assets/img/logo/logo.png" alt=""></a>
                                     </div>
                                 </div>
                                 <div class="col-xl-10 col-lg-10">
@@ -129,7 +129,7 @@
                 </div>
                 <div class="lg-10">
                     <div class="pdf_download" style="cursor:pointer">
-                        <div class="printer" >
+                        <div class="printer">
                             <i class="fa fa-print"></i>
                             <span id="download_pdf">Download receipt</span>
                         </div>
@@ -148,13 +148,13 @@
                             <div class="checkout__order" style="width:450px;">
                                 <div id="receipt">
                                     
-                                    <img src="assets/img/logo/logo2.png" alt="">
+                                    <img src="assets/img/logo/logo.png" alt="">
                                     <h2 style="margin-left:50px;margin-top:20px;margin-bottom:20px;">Thank you for your purchase!</h2>
                                     <h5>Your order</h5>
                                     <div class="checkout__order__product">
                                         <ul>
                                             <li>
-                                                <span class="top__text">Product</span>
+                                                <span class="top__text">Products</span>
                                                 <span style="margin-right:20px" class="top__text__right">Total</span>
                                             </li>
                                             <li>
@@ -170,12 +170,12 @@
                                             <li>Total <span>$ 750.0</span></li>
                                         </ul>
                                     </div> -->
-                                    <div class="checkout__order__widget">
-                                        <!-- <label for="o-acc">
+                                    <!-- <div class="checkout__order__widget">
+                                        <label for="o-acc">
                                             Create an acount?
                                             <input type="checkbox" id="o-acc">
                                             <span class="checkmark"></span>
-                                        </label> -->
+                                        </label>
                                         <p>Payment method</p>
                                         <label for="check-payment">
                                             Cash payment
@@ -187,7 +187,7 @@
                                             <input type="checkbox" checked id="paypal">
                                             <span class="checkmark"></span>
                                         </label>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="comment_section">
                                 
@@ -215,7 +215,7 @@
                                     <div class="single-footer-caption mb-30">
                                         <!-- logo -->
                                         <div class="footer-logo mb-35">
-                                            <a href="index.html"><img src="assets/img/logo/logo2_footer2.png" alt=""></a>
+                                            <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
                                         </div>
                                         <div class="footer-tittle">
                                             <div class="footer-pera">

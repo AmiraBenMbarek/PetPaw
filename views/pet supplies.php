@@ -68,7 +68,7 @@
                                 <!-- Logo -->
                                 <div class="col-xl-2 col-lg-2">
                                     <div class="logo">
-                                        <a href="index.html"><img src="assets/img/logo/logo2.png" alt=""></a>
+                                        <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
                                     </div>
                                 </div>
                                 <div class="col-xl-10 col-lg-10">
@@ -116,10 +116,14 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__links" style="float:right;">
-                        <div>
-                        <a href="orders.php">Go to orders
-                        <i class="fa fa-cart-arrow-down"></i></a>
-                        <div id="google_translate_element"></div>
+                        <div class="orders_hover">
+                            <a href="cart.php" class="orders">Go to cart
+                            <i class="fa fa-shopping-cart"></i></a>
+                            <a href="orders.php" class="orders">Go to orders
+                            <i class="fa fa-cart-arrow-down"></i></a>
+                            <a href="wishlist.php" class="orders">Wishlist
+                            <i class="fa fa-heart"></i></a>
+                            <span id="google_translate_element"></span>
                         </div>
                     </div>
                 </div>
@@ -200,25 +204,8 @@ function googleTranslateElementInit() {
                                             </div>
                                             </a>
                                         </li>
-
                                     </ul>
                                 </aside>
-                                <script>
-                                    var dropdown = document.getElementsByClassName("dropdown_btn");
-                                    var i;
-
-                                    for (i = 0; i < dropdown.length; i++) {
-                                        dropdown[i].addEventListener("click", function() {
-                                            this.classList.toggle("active");
-                                            var dropdownContent = this.nextElementSibling;
-                                            if (dropdownContent.style.display === "block") {
-                                                dropdownContent.style.display = "none";
-                                            } else {
-                                                dropdownContent.style.display = "block";
-                                            }
-                                        });
-                                    }
-                                </script>
                             </div>
                         </div>
 
@@ -232,34 +219,24 @@ function googleTranslateElementInit() {
                                 <?php echo '<a href="'."product.php?ID_Pr=". $produit['ID_Pr'].'">'?><img src="assets/img/gallery/<?php echo $produit['Image_Pr']; ?>"class="product__item__pic set-bg" height="360" width="270" alt="Image"></a>
                                 
                                     <ul class="product__hover">
-                                        <li><a href="#"><span class="fa fa-heart"></span></a></li>
-                                        <!-- <li>
-                                            <a href="cart.php?quantity_cart=1&price_cart=<?php //echo $produit['Price_Pr']; ?>&id_cart=<?php //echo $produit['ID_Pr']; ?>&name_cart=<?php //echo $produit['Name_Pr']; ?>">
+                                        <li><a href="addWishlist.php?id_cart=<?php echo $produit['ID_Pr']; ?>">
+                                            <span class="fa fa-heart"></span></a></li>
+                                        <li>
+                                            <a href="addCart.php?quantity_cart=1&price_cart=<?php echo $produit['Price_Pr']; ?>&id_cart=<?php echo $produit['ID_Pr']; ?>&name_cart=<?php echo $produit['Name_Pr']; ?>">
                                                 <span class="fa fa-shopping-cart"></span>
                                             </a>
-                                        </li> -->
-                                        <li>
-                                            <form method="POST" action="addCart.php">
-                                                <input type="hidden" name="quantity_cart" value="1" >
-                                                <input type="hidden" name="id_cart" value="<?php echo $produit['ID_Pr']?>" >
-                                                <input type="hidden" name="name_cart" value="<?php echo $produit['Name_Pr']?>" >
-                                                <input type="hidden" name="price_cart" value="<?php echo $produit['Price_Pr']?>" >
-                                                <button type="submit" name="add_to_cart" class="cart-btn btn">
-                                                    <span class="fa fa-shopping-cart"></span> 
-                                                </button>
-                                            </form>
                                         </li>
                                     </ul>
                             </div>
                                 <div class="product__item__text">
                                     <h6><a href="product.php?ID_Pr=<?php echo $produit['ID_Pr']; ?>" ><?php echo $produit['Name_Pr']; ?></a></h6>
-                                    <div class="rating">
+                                    <!-- <div class="rating">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
-                                    </div>
+                                    </div> -->
                                     <div class="product__price" style="margin-bottom:70px"><?php echo $produit['Price_Pr']; ?> DT</div>
                                 </div>
                         </div>
@@ -298,7 +275,7 @@ function googleTranslateElementInit() {
                                     <div class="single-footer-caption mb-30">
                                         <!-- logo -->
                                         <div class="footer-logo mb-35">
-                                            <a href="index.html"><img src="assets/img/logo/logo2_footer2.png" alt=""></a>
+                                            <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
                                         </div>
                                         <div class="footer-tittle">
                                             <div class="footer-pera">
@@ -402,6 +379,7 @@ function googleTranslateElementInit() {
         <script src="./assets/js/wow.min.js"></script>
         <script src="./assets/js/animated.headline.js"></script>
         <script src="./assets/js/jquery.magnific-popup.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
         <!-- Date Picker -->
         <script src="./assets/js/gijgo.min.js"></script>

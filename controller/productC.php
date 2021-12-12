@@ -177,8 +177,8 @@ class productC
 			}	
         }
 
-        function afficherComments(){
-            $sql="SELECT * FROM `comments`";
+        function afficherComments($id){
+            $sql="SELECT * FROM `comments` WHERE ID_Pr = $id";
             $db = config::getConnexion();
             try{
                 $liste = $db->query($sql);
@@ -240,7 +240,6 @@ class productC
             die('erreur: '. $e->getMessage());
         }
     }
-    //$total_products = $pdo->query('SELECT * FROM products')->rowCount();
 
     function pagination()
 	{
@@ -302,6 +301,33 @@ class productC
             die('error:'. $e->getMessage());
         }
     }
+
+    function addToWishlist($id)
+    {
+        $sql="INSERT INTO wishlist (id_wishlist ,id_pr )
+			VALUES (NULL,$id)";
+			$db = config::getConnexion();
+			try{
+				$query = $db->prepare($sql);
+				$query->execute();			
+			}
+			catch (Exception $e){
+				echo 'Erreur: '.$e->getMessage();
+            }
+    }
+
+    function displayWishlist(){
+        $sql="SELECT * FROM `wishlist`";
+        $db = config::getConnexion();
+        try{
+            $liste = $db->query($sql);
+            return $liste;
+        }
+        catch(Exception $e){
+            die('erreur: '. $e->getMessage());
+        }
+    }
+
 }
 
 ?>

@@ -2,9 +2,9 @@
     include_once '../controller/productC.php';
 
     $productC = new productC();
-    $cart_items=$productC->displayCart();
+    $list_items=$productC->displayWishlist();
 
-    $total=$productC->totalCart();    
+    //$total=$productC->totalCart();
 ?>
 
 <!doctype html>
@@ -13,7 +13,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Cart details</title>
+        <title>Wishlist</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="site.webmanifest">
@@ -122,51 +122,29 @@
     <main class="main_cart">
         <div class="basket">
             <div class="basket-labels">
-                <ul>
-                    <li class="item item-heading">Item</li>
+                <div>
+                    <li class="item item-heading2">Products</li>
                     <li class="price">Price</li>
-                    <li class="quantity">Quantity</li>
-                    <li class="">Subtotal</li>
-                    <li class="remove_cart_btn"></li>
-                </ul>
+                    <li class="remove_cart_btn">Add to cart</li>
+                </div>
             </div>
-            <?php foreach($cart_items as $cart){ ?>
+            <?php foreach($list_items as $list){ 
+                $prod = $productC->getProduct($list['id_pr']);
+            ?>
             <div class="basket-product">
                 <div class="item">
                     <div class="product-details">
-                        <h1 class="product_name"><strong><span class="item-quantity"><?php echo $cart['qte_panier']; ?></span> x </strong><?php echo $cart['nom_panier']; ?></h1>
+                        <h1 class="product_name"><?php echo $prod['Name_Pr']; ?></h1>
                     </div>
                 </div>
-                <div class="price"><?php echo $cart['prix_total']; ?></div>
-                <div class="quantity">
-                    <input type="number" name="quantity_cart" id="quantity_field" value="<?php echo $cart['qte_panier']; ?>" min="1" class="quantity-field">
-                </div>
-                <div class="subtotal"><?php echo $cart['prix_total']*$cart['qte_panier']; ?></div>
-                <div class="remove quantity">
-                    <button><i class="fa fa-window-close"></i></button>
-                </div>
+                <div class="price"><?php echo $prod['Price_Pr']; ?></div>
+                <a class="btn" href="addCart.php?quantity_cart=1&price_cart=<?php echo $prod['Price_Pr']; ?>&id_cart=<?php echo $prod['ID_Pr']; ?>&name_cart=<?php echo $prod['Name_Pr']; ?>">
+                    <span class="fa fa-shopping-cart"></span>
+                </a>
             </div>
             <?php } ?>
         </div>
     <aside>
-        <form action="checkout.php" method="POST">
-            <div class="summary">
-                <div class="summary-total-items"><span class="total-items"></span> Items in your Bag</div>
-                <div class="summary-subtotal">
-                    <div class="subtotal-title">Subtotal</div>
-                    <div class="subtotal-value final-value" id="basket-subtotal"><?php echo $total['prix']; ?></div>
-                    <input type="hidden" name="price_cart" value="<?php echo $total['prix']; ?>">
-                </div>
-                
-                <div class="summary-total">
-                    <div class="total-title">Total</div>
-                    <div class="total-value final-value" id="basket-total"><?php echo $total['prix']; ?></div>
-                </div>
-                <div class="summary-checkout">
-                    <button type="submit" class="checkout-cta btn">Proceed to Checkout</button>
-                </div>
-            </div>
-        </form>
     </aside>
   </main>
 

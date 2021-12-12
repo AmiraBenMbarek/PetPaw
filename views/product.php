@@ -6,7 +6,7 @@
     if (isset($id)){
         $product = $productC->getProduct($id);  
     }
-    $comment = $productC->afficherComments();
+    $comment = $productC->afficherComments($id);
 ?>
 
     <!doctype html>
@@ -63,7 +63,7 @@
                                 <!-- Logo -->
                                 <div class="col-xl-2 col-lg-2">
                                     <div class="logo">
-                                        <a href="index.html"><img src="assets/img/logo/logo2.png" alt=""></a>
+                                        <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
                                     </div>
                                 </div>
                                 <div class="col-xl-10 col-lg-10">
@@ -118,10 +118,14 @@
                 </div>
                 <div class="col-lg-12">
                     <div class="breadcrumb__links" style="float:right;">
-                        <div>
-                        <a href="orders.php">Go to orders
-                        <i class="fa fa-cart-arrow-down"></i></a>
-                        <div id="google_translate_element"></div>
+                        <div class="orders_hover">
+                            <a href="cart.php" class="orders">Go to cart
+                            <i class="fa fa-shopping-cart"></i></a>
+                            <a href="orders.php" class="orders">Go to orders
+                            <i class="fa fa-cart-arrow-down"></i></a>
+                            <a href="wishlist.php" class="orders">Wishlist
+                            <i class="fa fa-heart"></i></a>
+                            <span id="google_translate_element"></span>
                         </div>
                     </div>
                 </div>
@@ -138,7 +142,7 @@ function googleTranslateElementInit() {
     <main>
     <!-- Product Details Section Begin -->
     <section class="product-details spad">
-        <div class="container">
+        <div class="container" style="margin-top:-40px;">
             <div class="row">
                 <div class="col-lg-5">
                     <div class="product__details__pic">
@@ -148,21 +152,10 @@ function googleTranslateElementInit() {
                     </div>
                 </div>
                 <div class="col-lg-6">
-                        <div style="float:right;">
-                            <a href="#comments">
-                            <i class="fa fa-comments" style="font-size:48px;color:purple"></i></a>
-                        </div>
                     <div class="product__details__text">
-                        <h2><?php echo $product['Name_Pr'] ?></h2>
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <span>( 138 reviews )</span>
-                        </div>
-                        <div class="product__details__price"><h4><?php echo $product['Price_Pr'] ?> DT</h4></div>
+                        <h2><strong><?php echo $product['Name_Pr'] ?></strong></h2>
+                        
+                        <div class="product__details__price"><h3><?php echo $product['Price_Pr'] ?> DT</h3></div>
                         <p><?php echo $product['Description_Pr'] ?></p>
                         <div class="product__details__button">
                             <form action="addCart.php" method="POST">
@@ -179,10 +172,11 @@ function googleTranslateElementInit() {
                                     <span class="fa fa-shopping-cart"></span> 
                                         Add to cart
                                 </button>
+                                <ul style="margin-right:10px" class="icon_hover">
+                                    <li><a href="addWishlist.php?id_cart=<?php echo $product['ID_Pr']; ?>"><span class="fa fa-heart"></span></a></li>
+                                </ul>
                             </form>
-                            <ul class="icon_hover">
-                                <li><a href="#"><span class="fa fa-heart"></span></a></li>
-                            </ul>
+                            
                             
                         </div>
                         <div class="product__details__widget">
@@ -198,16 +192,16 @@ function googleTranslateElementInit() {
                                     </div>
                                 </li>
 
-                                <li>
+                                <!-- <li>
                                     <span>Promotions:</span>
                                     <p>Free shipping</p>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="comments" class="row" style="padding:80px">
+            <div id="comments" class="row">
                 <div class="container">
                             <div class="comment_section p-5">
                                 <form action="comments.php" method="POST" class="single_sidebar_widget search_widget">
@@ -247,7 +241,7 @@ function googleTranslateElementInit() {
                                     <div class="single-footer-caption mb-30">
                                         <!-- logo -->
                                         <div class="footer-logo mb-35">
-                                            <a href="index.html"><img src="assets/img/logo/logo2_footer2.png" alt=""></a>
+                                            <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
                                         </div>
                                         <div class="footer-tittle">
                                             <div class="footer-pera">

@@ -9,6 +9,6 @@
     ) {
         $orderC->editOrder($_POST["ID_ord"],$_POST['Quantity_ord'],$_POST["Price_ord"]);
     }
-    header("location:pet supplies.php");
+    header("location:orders.php");
 
 ?>

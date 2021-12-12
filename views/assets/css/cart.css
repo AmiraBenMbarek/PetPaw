@@ -24,14 +24,6 @@ strong {
     padding: 0;
 }
 
-
-/* 
-input,
-button {
-    border: 0 none;
-    outline: 0 none;
-} */
-
 button {
     background-color: rgb(146, 16, 163);
     color: #fff;
@@ -141,9 +133,10 @@ li.subtotal:before {
 
 .item-heading {
     padding-left: 5.375rem;
-    /* -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box; */
+}
+
+.item-heading2 {
+    padding-left: 1.375rem;
 }
 
 .basket-product {

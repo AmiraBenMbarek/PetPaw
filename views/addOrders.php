@@ -9,5 +9,20 @@
     foreach($cart_items as $cart){
         $productC->addOrder($cart['ID_Pr'],$cart['prix_total'],$cart['qte_panier'],$cart['id_panier']);
     }
-    header("Location:orders.php?mail=$mail");
+
+    $message = "Thank you for purchasing from our shop
+
+    Your order was placed successfully
+    ";
+    
+        $cart_items=$productC->displayCart();
+        foreach($cart_items as $cart){
+        $message .= $cart['qte_panier']." x ".$cart['nom_panier']."     " .$cart['prix_total']." DT
+    ";
+        }
+    
+        mail($mail,'Order Confirmed',$message,'From: mirabm48@gmail.com');
+
+        
+    header("Location:orders.php");
 ?>
