@@ -1,0 +1,99 @@
+.form_container .add_btn {
+    height: 50px;
+    font-size: 16px;
+    padding-left: 55px;
+    text-align: center;
+    background-size: 200%
+}
+
+.add_btn {
+    border: none;
+    padding: 13px 33px;
+    text-transform: capitalize;
+    border-radius: 30px;
+    cursor: pointer;
+    color: #fff;
+    display: inline-block;
+    font-size: 16px;
+    transition: 0.6s;
+    box-shadow: 0px 7px 21px 0px rgba(0, 0, 0, 0.12);
+    background-image: linear-gradient(100deg, #3ab5db 0%, #690483 100%);
+    background-position: right;
+    background-size: 200%
+}
+
+.add_btn i {
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 500;
+    position: relative;
+    left: 26px;
+    -webkit-transition: .4s;
+    -moz-transition: .4s;
+    -o-transition: .4s;
+    transition: .4s
+}
+
+.add_btn:hover i {
+    left: 30px
+}
+
+.add_btn:hover {
+    background-position: left;
+    color: #ffffff;
+}
+
+.add_btn.focus,
+.add_btn:focus {
+    outline: 0;
+    box-shadow: none
+}
+
+.form_popup {
+    display: none;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    overflow: hidden;
+    outline: 0;
+}
+
+.form_container {
+    max-width: 300px;
+    padding: 15px;
+    margin-left: 40%;
+    margin-top: 12%;
+    border: none;
+    background: #f1f1f1;
+}
+
+.champs {
+    height: 50px;
+    border-color: #690483;
+    font-size: 13px;
+    color: #690483;
+    padding-left: 90px;
+    border-radius: 0;
+}
+
+.champs::placeholder {
+    color: #690483
+}
+
+.champs:focus {
+    border-color: #690483;
+    outline: 0;
+    box-shadow: none
+}
+
+.form_container .add_btn {
+    height: 50px;
+    font-size: 16px;
+    padding-left: 55px;
+    text-align: center;
+    background-size: 200%
+}
